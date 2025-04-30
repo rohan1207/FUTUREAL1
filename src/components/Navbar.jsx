@@ -9,9 +9,7 @@ const menuItems = [
   { name: "Meet Our Team", path: "/about" },
 ];
 
-const rightLinks = [
-  { name: "Newsletter", path: "/newsletter" },
-];
+const rightLinks = [{ name: "Newsletter", path: "/newsletter" }];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +27,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               className="relative"
             >
-              <Link to="/home">
+              <Link to="/">
                 <img
                   src="/FLogo.png"
                   alt="Logo"
@@ -56,7 +54,11 @@ const Navbar = () => {
           {/* Desktop Right Side */}
           <div className="hidden md:flex items-center gap-6 ml-auto text-white text-sm font-medium">
             {rightLinks.map((item, index) => (
-              <Link key={index} to={item.path} className="hover:text-[#8F44EC] transition-colors">
+              <Link
+                key={index}
+                to={item.path}
+                className="hover:text-[#8F44EC] transition-colors"
+              >
                 {item.name}
               </Link>
             ))}
@@ -87,62 +89,57 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
-  {isOpen && (
-    <motion.div
-      initial={{ opacity: 0, x: "100%" }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: "100%" }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="fixed inset-0 bg-black bg-opacity-95 backdrop-blur-sm z-40 flex flex-col px-6 py-6"
-    >
-      {/* Logo and Close Button */}
-      <div className="flex items-center justify-between mb-8">
-        <Link to="/home" onClick={() => setIsOpen(false)}>
-          <img
-            src="/newlogo.png"
-            alt="Logo"
-            className="h-10 object-contain"
-          />
-        </Link>
-        <button onClick={() => setIsOpen(false)} className="text-white">
-          <XIcon className="h-6 w-6" />
-        </button>
-      </div>
-
-      {/* Menu Items */}
-      <div className="flex flex-col items-start gap-5">
-        {[...menuItems, ...rightLinks].map((item, index) => (
-          <Link
-            key={index}
-            to={item.path}
-            onClick={() => setIsOpen(false)}
-            className="text-white text-lg font-medium hover:text-[#8F44EC] transition-colors"
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="fixed inset-0 bg-black bg-opacity-95 backdrop-blur-sm z-40 flex flex-col px-6 py-6"
           >
-            {item.name}
-          </Link>
-        ))}
-      </div>
+            {/* Logo and Close Button */}
+            <div className="flex items-center justify-between mb-8">
+              <Link to="/" onClick={() => setIsOpen(false)}>
+                <img
+                  src="/newlogo.png"
+                  alt="Logo"
+                  className="h-10 object-contain"
+                />
+              </Link>
+              <button onClick={() => setIsOpen(false)} className="text-white">
+                <XIcon className="h-6 w-6" />
+              </button>
+            </div>
 
-    
+            {/* Menu Items */}
+            <div className="flex flex-col items-start gap-5">
+              {[...menuItems, ...rightLinks].map((item, index) => (
+                <Link
+                  key={index}
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className="text-white text-lg font-medium hover:text-[#8F44EC] transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
 
-      {/* Optional: Search */}
-      <div className="mt-auto pt-10">
-  
-         {/* CTA Button */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="mt-6 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] text-white px-6 py-3 rounded-full font-semibold text-base w-full text-center"
-        onClick={() => setIsOpen(false)}
-      >
-        <Link to="/contact-us">Get in Touch</Link>
-      </motion.button>
-      
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
-
+            {/* Optional: Search */}
+            <div className="mt-auto pt-10">
+              {/* CTA Button */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-6 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] text-white px-6 py-3 rounded-full font-semibold text-base w-full text-center"
+                onClick={() => setIsOpen(false)}
+              >
+                <Link to="/contact-us">Get in Touch</Link>
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
