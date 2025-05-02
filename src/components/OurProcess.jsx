@@ -19,7 +19,7 @@ const steps = [
     title: "Strategy Development",
     description:
       "We develop a holistic strategy leveraging our extensive experience and market research.",
-  
+
     icon: HiOutlineChartBar,
     color: "#8B5CF6",
   },
@@ -45,73 +45,79 @@ const QuoteCard = ({ isInView }) => {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ 
-        duration: 0.8, 
+      transition={{
+        duration: 0.8,
         delay: 0.5,
         type: "spring",
-        stiffness: 100
+        stiffness: 100,
       }}
       className="relative max-w-3xl mx-auto mt-16 mb-8 px-6 py-8 md:py-10 rounded-2xl overflow-hidden"
     >
       {/* Background with gradient */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-purple-600/90 rounded-2xl z-0"
         initial={{ opacity: 0.7 }}
         animate={isInView ? { opacity: 0.9 } : { opacity: 0.7 }}
         transition={{ duration: 1.2 }}
       />
-      
+
       {/* Decorative elements */}
-      <motion.div 
+      <motion.div
         className="absolute top-0 left-0 w-24 h-24 rounded-br-full bg-white/10"
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : { scale: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       />
-      
-      <motion.div 
+
+      <motion.div
         className="absolute bottom-0 right-0 w-32 h-32 rounded-tl-full bg-white/10"
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : { scale: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       />
-      
+
       {/* Quote content */}
       <div className="relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+          animate={
+            isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
+          }
           transition={{ duration: 0.5, delay: 0.7 }}
           className="text-5xl text-white opacity-70 font-serif leading-none mb-3"
         >
           "
         </motion.div>
-        
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-white text-lg md:text-xl font-medium leading-relaxed mb-4"
         >
-          We take a comprehensive approach to project delivery. Whether it's through our 
-          <span className="font-bold"> Design & Build model </span> 
-          or 
-          <span className="font-bold"> General Contracting services</span>, 
-          we integrate design vision with precise planning and execution.
+          We take a comprehensive approach to project delivery. Whether it's
+          through our
+          <span className="font-bold"> Design & Build model </span>
+          or
+          <span className="font-bold"> General Contracting services</span>, we
+          integrate design vision with precise planning and execution.
         </motion.p>
-        
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5, delay: 1.1 }}
           className="text-white/90 text-base md:text-lg leading-relaxed"
         >
-          Our collaborative process ensures efficiency, cost control, and superior craftsmanship, all under one roof.
+          Our collaborative process ensures efficiency, cost control, and
+          superior craftsmanship, all under one roof.
         </motion.p>
-        
+
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+          animate={
+            isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
+          }
           transition={{ duration: 0.5, delay: 1.3 }}
           className="text-5xl text-white opacity-70 font-serif leading-none text-right mt-3"
         >
@@ -130,19 +136,19 @@ const OurProcess = ({ onLoad }) => {
   // Preload background image
   useEffect(() => {
     const img = new Image();
-    img.src = '/fbg.jpg';
+    img.src = "/opbg.jpg";
     img.onload = () => {
-      console.log('OurProcess background loaded');
+      console.log("OurProcess background loaded");
       setBgLoaded(true);
       onLoad?.();
     };
     img.onerror = () => {
-      console.log('OurProcess background failed to load');
+      console.log("OurProcess background failed to load");
       setBgLoaded(true);
       onLoad?.();
     };
   }, [onLoad]);
-  
+
   const [activeStep, setActiveStep] = useState(0);
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef(null);
@@ -177,7 +183,7 @@ const OurProcess = ({ onLoad }) => {
 
     return () => observer.disconnect();
   }, []);
-  
+
   // Intersection observer for quote card
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -226,20 +232,26 @@ const OurProcess = ({ onLoad }) => {
       ref={sectionRef}
       className="relative py-16 md:py-24 overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/fbg.jpg')",
+        backgroundImage: "url('/opbg.jpg')",
         backgroundColor: "#f8fafc",
       }}
     >
-      {/* Subtle gradient overlay instead of blur */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/30" />
+      {/* Darker gradient overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/50" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        {/* Section heading */}
+        {/* Section heading with improved visibility */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          <h2
+            className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide"
+            style={{ textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}
+          >
             Our Process
           </h2>
-          <p className="text-lg text-slate-800">
+          <p
+            className="text-lg text-white/90 font-light tracking-wide"
+            style={{ textShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
+          >
             From concept to completion, Step by Step
           </p>
         </div>
@@ -355,7 +367,7 @@ const OurProcess = ({ onLoad }) => {
                     >
                       {step.title}
                     </h3>
-                    <p className="text-sm text-slate-700 mb-1 line-clamp-3">
+                    <p className="text-sm text-slate-700 mb-1 ">
                       {step.description}
                     </p>
                     {step.sub && (
