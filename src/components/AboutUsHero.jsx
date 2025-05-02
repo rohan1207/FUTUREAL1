@@ -100,13 +100,7 @@ export default function WWRHeroSection({ onLoad }) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <button
-              onClick={handleButtonClick}
-              className="px-6 py-2 bg-white/10 border border-white rounded-full hover:bg-gradient-to-r from-sky-500 to-purple-500 transition-all flex items-center gap-2"
-            >
-              I'm interested in
-              <ChevronDown size={18} />
-            </button>
+           
 
             <AnimatePresence>
               {open && (

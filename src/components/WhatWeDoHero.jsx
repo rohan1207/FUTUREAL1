@@ -193,46 +193,7 @@ const WhatWeDoHero = ({ onLoad }) => {
          We deliver designs that inspire, connect and perform.
           </motion.p>
 
-          <motion.div 
-            variants={itemVariants} 
-            className="relative inline-block" 
-            ref={dropdownRef}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <button
-              onClick={handleButtonClick}
-              className="px-6 py-2 bg-white/10 border border-white rounded-full hover:bg-gradient-to-r from-sky-500 to-purple-500 transition-all"
-            >
-              I'm interested in
-            </button>
-            <AnimatePresence>
-              {open && (
-                <motion.ul
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute mt-1 w-48 bg-white text-black rounded-lg shadow-lg overflow-hidden z-50"
-                >
-                  {['Design & Build', 'General Contracting'].map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => {
-                        // Handle the selection
-                        console.log(`Selected: ${item}`);
-                        // Close the dropdown after selection
-                        setOpen(false);
-                      }}
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </motion.ul>
-              )}
-            </AnimatePresence>
-          </motion.div>
+         
         </motion.div>
       </div>
     </section>

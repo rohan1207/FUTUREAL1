@@ -32,6 +32,32 @@ const WhatWeDo = ({ onLoad }) => {
   const { scrollY } = useScroll();
   const containerRef = useRef(null);
 
+  // Add refs for sections
+  const designAndBuildRef = useRef(null);
+  const generalContractingRef = useRef(null);
+
+  // Handle scroll to section based on hash
+  useEffect(() => {
+    const scrollToSection = () => {
+      const hash = window.location.hash;
+      setTimeout(() => {
+        if (hash === "#design-and-build" && designAndBuildRef.current) {
+          designAndBuildRef.current.scrollIntoView({ behavior: "smooth" });
+        } else if (
+          hash === "#general-contracting" &&
+          generalContractingRef.current
+        ) {
+          generalContractingRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    };
+
+    scrollToSection();
+    window.addEventListener("hashchange", scrollToSection);
+
+    return () => window.removeEventListener("hashchange", scrollToSection);
+  }, []);
+
   // Track scroll direction
   useEffect(() => {
     const handleScroll = () => {
@@ -89,7 +115,7 @@ const WhatWeDo = ({ onLoad }) => {
   // Memoize sectors data to prevent unnecessary re-renders
   const sectors = useMemo(
     () => [
-      { title: "Office Spaces", img: "/serviceoffice.webp" },
+      { title: "Educational Spaces", img: "/school3.jpg" },
       { title: "Healthcare Spaces", img: "/hospital3.jpg" },
       { title: "Industrial Spaces", img: "/industrialspace.jpg" },
     ],
@@ -239,7 +265,9 @@ const WhatWeDo = ({ onLoad }) => {
       <WhatWeDoHero />
 
       {/* DESIGN AND BUILD + OUR APPROACH */}
-      <DesignandBuild />
+      <div ref={designAndBuildRef}>
+        <DesignandBuild />
+      </div>
 
       {/* SECTORS WE SERVE */}
       <motion.div
@@ -265,7 +293,9 @@ const WhatWeDo = ({ onLoad }) => {
 
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-black z-0" />
-        <GeneralContracting/>
+        <div ref={generalContractingRef}>
+          <GeneralContracting />
+        </div>
         <div className="relative z-10 container mx-auto px-4">
           {/* Section Header */}
           <motion.div className="text-center mb-16" variants={fadeIn}>
@@ -388,11 +418,6 @@ const WhatWeDo = ({ onLoad }) => {
                     {sector.title}
                     <div className="h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] transition-all duration-500" />
                   </motion.h3>
-
-                  <motion.p className="text-gray-300 text-sm opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                    Explore our innovative solutions and expertise in creating
-                    exceptional spaces that define the future.
-                  </motion.p>
                 </div>
 
                 {/* Hover Effect Border */}
@@ -405,9 +430,6 @@ const WhatWeDo = ({ onLoad }) => {
           </div>
         </div>
       </motion.div>
-
-      {/* WHY CHOOSE US */}
-      <WhyChooseUs />
     </>
   );
 };

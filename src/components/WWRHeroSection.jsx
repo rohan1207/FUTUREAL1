@@ -92,47 +92,7 @@ Shaping the future of spaces, one project at a time
 
           </motion.p>
 
-          {/* Dropdown */}
-          <motion.div
-            variants={itemVariants}
-            className="relative inline-block"
-            ref={dropdownRef}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <button
-              onClick={handleButtonClick}
-              className="px-6 py-2 bg-white/10 border border-white rounded-full hover:bg-gradient-to-r from-sky-500 to-purple-500 transition-all flex items-center gap-2"
-            >
-              I'm interested in
-              <ChevronDown size={18} />
-            </button>
-
-            <AnimatePresence>
-              {open && (
-                <motion.ul
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute mt-2 w-56 bg-white text-black rounded-lg shadow-lg z-50"
-                >
-                  {['Design & Build', 'General Contracting'].map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => {
-                        console.log(`Selected: ${item}`);
-                        setOpen(false);
-                      }}
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </motion.ul>
-              )}
-            </AnimatePresence>
-          </motion.div>
+         
         </motion.div>
       </div>
     </div>

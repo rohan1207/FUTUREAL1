@@ -19,22 +19,22 @@ const steps = [
     title: "Strategy Development",
     description:
       "We develop a holistic strategy leveraging our extensive experience and market research.",
-    sub: "Feasibility >> Market Research >> Project Strategy",
+  
     icon: HiOutlineChartBar,
     color: "#8B5CF6",
   },
   {
     title: "Implementation",
     description:
-      "Implementing all the plans with the assured period and cost. Adhering to all the safety guidelines set by the client.",
-    sub: "Construction Management >> Quality Control >> Time Management",
+      "Executing the project plan efficiently while ensuring safety, quality, and time management",
+
     icon: HiOutlineCube,
     color: "#EC4899",
   },
   {
     title: "Delivery & Beyond",
     description:
-      "Transforming our client's vision into reality by maintaining a perfect balance of cost, time, and quality.",
+      "Delivering results with an optimal balance of cost, time, and quality while ensuring long-term success through stakeholder collaboration.",
     icon: HiOutlineClipboardCheck,
     color: "#10B981",
   },

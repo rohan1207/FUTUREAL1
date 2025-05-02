@@ -1,31 +1,64 @@
 import { useEffect, useState, useRef } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useInView
-} from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const images = [
-  { src: "./office1.jpg", title: "Civil & Interior Works", category: "construction" },
+  {
+    src: "./office1.jpg",
+    title: "Civil & Interior Works",
+    category: "construction",
+  },
   { src: "./office2.jpg", title: "Turnkey D&B", category: "development" },
-  { src: "./office3.jpg", title: "General Contracting", category: "construction" },
-  { src: "./office4.jpg", title: "Civil & Interior Works", category: "interior" },
+  {
+    src: "./office3.jpg",
+    title: "General Contracting",
+    category: "construction",
+  },
+  {
+    src: "./office4.jpg",
+    title: "Civil & Interior Works",
+    category: "interior",
+  },
   { src: "./office5.jpg", title: "Turnkey D&B", category: "development" },
-  { src: "./office6.jpg", title: "General Contracting", category: "construction" },
-  { src: "./office7.jpg", title: "General Contracting", category: "construction" },
+  {
+    src: "./office6.jpg",
+    title: "General Contracting",
+    category: "construction",
+  },
+  {
+    src: "./office7.jpg",
+    title: "General Contracting",
+    category: "construction",
+  },
   { src: "./office8.jpg", title: "Turnkey D&B", category: "commercial" },
-  { src: "./office9.jpg", title: "Civil & Interior Works", category: "residential" },
+  {
+    src: "./office9.jpg",
+    title: "Civil & Interior Works",
+    category: "residential",
+  },
   { src: "./hospital1.jpg", title: "Turnkey D&B", category: "commercial" },
-  { src: "./hospital2.jpg", title: "Civil & Interior Works", category: "residential" },
+  {
+    src: "./hospital2.jpg",
+    title: "Civil & Interior Works",
+    category: "residential",
+  },
   { src: "./hospital3.jpg", title: "Turnkey D&B", category: "commercial" },
-  { src: "./hospital4.jpg", title: "Civil & Interior Works", category: "residential" },
-  { src: "./school3.jpg", title: "Civil & Interior Works", category: "residential" },
+  {
+    src: "./hospital4.jpg",
+    title: "Civil & Interior Works",
+    category: "residential",
+  },
+  {
+    src: "./school3.jpg",
+    title: "Civil & Interior Works",
+    category: "residential",
+  },
   { src: "./school4.jpeg", title: "Turnkey D&B", category: "commercial" },
-  { src: "./school5.jpg", title: "General Contracting", category: "construction" },
-
- 
-
+  {
+    src: "./school5.jpg",
+    title: "General Contracting",
+    category: "construction",
+  },
 ];
 
 const Hero = ({ onLoad }) => {
@@ -45,9 +78,9 @@ const Hero = ({ onLoad }) => {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.1
-      }
-    }
+        delayChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -55,8 +88,8 @@ const Hero = ({ onLoad }) => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
   };
 
   // Check if device is mobile
@@ -64,12 +97,12 @@ const Hero = ({ onLoad }) => {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    
+    window.addEventListener("resize", checkIsMobile);
+
     return () => {
-      window.removeEventListener('resize', checkIsMobile);
+      window.removeEventListener("resize", checkIsMobile);
     };
   }, []);
 
@@ -123,9 +156,19 @@ const Hero = ({ onLoad }) => {
     center: {
       x: 0,
       opacity: 1,
-      transition: { x: { type: "spring", stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } }
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.2 },
+      },
     },
-    exit: (direction) => ({ x: direction > 0 ? -1000 : 1000, opacity: 0, transition: { x: { type: "spring", stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } } })
+    exit: (direction) => ({
+      x: direction > 0 ? -1000 : 1000,
+      opacity: 0,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.2 },
+      },
+    }),
   };
 
   const handleMouseEnter = () => {
@@ -139,7 +182,7 @@ const Hero = ({ onLoad }) => {
       // Add a small delay before closing to allow user to move to dropdown items
       setTimeout(() => {
         // Only close if the mouse is not over the dropdown container
-        if (dropdownRef.current && !dropdownRef.current.matches(':hover')) {
+        if (dropdownRef.current && !dropdownRef.current.matches(":hover")) {
           setOpen(false);
         }
       }, 100);
@@ -147,7 +190,7 @@ const Hero = ({ onLoad }) => {
   };
 
   const handleButtonClick = () => {
-    setOpen(prev => !prev);
+    setOpen((prev) => !prev);
   };
 
   return (
@@ -183,8 +226,11 @@ const Hero = ({ onLoad }) => {
             className="text-4xl md:text-6xl font-bold leading-tight mb-6"
           >
             <motion.span variants={itemVariants}>
-              Designing Spaces,<br />
-              <span className="bg-gradient-to-r from-sky-400 to-purple-500 bg-clip-text text-transparent">Defining Experiences</span>
+              Designing Spaces,
+              <br />
+              <span className="bg-gradient-to-r from-sky-400 to-purple-500 bg-clip-text text-transparent">
+                Defining Experiences
+              </span>
             </motion.span>
           </motion.h1>
 
@@ -192,13 +238,14 @@ const Hero = ({ onLoad }) => {
             variants={itemVariants}
             className="text-lg md:text-xl text-white/90 max-w-3xl mb-8"
           >
-            At Futureal, we reimagine commercial spaces with creativity, precision, and purpose.
-            Specializing in Design & Build and General Contracting, we bring your vision to life.
+            At Futureal, we reimagine commercial spaces with creativity,
+            precision, and purpose. Specializing in Design & Build and General
+            Contracting, we bring your vision to life.
           </motion.p>
 
-          <motion.div 
-            variants={itemVariants} 
-            className="relative inline-block" 
+          <motion.div
+            variants={itemVariants}
+            className="relative inline-block"
             ref={dropdownRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -218,20 +265,24 @@ const Hero = ({ onLoad }) => {
                   transition={{ duration: 0.3 }}
                   className="absolute mt-1 w-48 bg-white text-black rounded-lg shadow-lg overflow-hidden z-50"
                 >
-                  {['Design & Build', 'General Contracting'].map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => {
-                        // Handle the selection
-                        console.log(`Selected: ${item}`);
-                        // Close the dropdown after selection
-                        setOpen(false);
-                      }}
+                  <li className="hover:bg-gray-100">
+                    <Link
+                      to="/design-build#design-and-build"
+                      className="block px-4 py-2 w-full"
+                      onClick={() => setOpen(false)}
                     >
-                      {item}
-                    </li>
-                  ))}
+                      Design & Build
+                    </Link>
+                  </li>
+                  <li className="hover:bg-gray-100">
+                    <Link
+                      to="/design-build#general-contracting"
+                      className="block px-4 py-2 w-full"
+                      onClick={() => setOpen(false)}
+                    >
+                      General Contracting
+                    </Link>
+                  </li>
                 </motion.ul>
               )}
             </AnimatePresence>

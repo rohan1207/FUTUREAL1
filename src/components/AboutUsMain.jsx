@@ -86,55 +86,6 @@ const AboutUsMain = () => {
         >
           
 
-          {/* Stats Section */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
-            variants={{
-              hidden: { opacity: 0 },
-              show: {
-                opacity: 1,
-                transition: { staggerChildren: 0.2 },
-              },
-            }}
-            initial="hidden"
-            animate={isInView ? "show" : "hidden"}
-          >
-            {[
-              { number: "50+", label: "Years of Collective Experience" },
-              { number: "15+", label: "Clients" },
-              { number: "10,00,000+", label: "Sq.ft.delivered" },
-              { number: "50+", label: "Project Completed" },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                className="text-center p-6 bg-white rounded-lg"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                <motion.h3
-                  className="text-4xl md:text-5xl font-light text-gray-900 mb-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                  }
-                  transition={{ duration: 0.6, delay: 0.2 * index }}
-                >
-                  {stat.number}
-                </motion.h3>
-                <motion.p
-                  className="text-gray-600"
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 * index + 0.2 }}
-                >
-                  {stat.label}
-                </motion.p>
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </div>

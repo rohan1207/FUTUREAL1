@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import WWRHeroSection from '../components/WWRHeroSection'
-import IPDModal from '../components/IPDModal'
+
 import IDPValueCreationSection from '../components/IDPValueCreationSection'
-import WhyChooseUs from '../components/WhyChooseUs'
+
 import VisonandMission from '../components/VisionandMission'
 import OurValues from '../components/OurValues'
 
@@ -11,9 +11,9 @@ export default function WhoWeAreDetail() {
     const [isLoading, setIsLoading] = useState(true);
     const [componentsLoaded, setComponentsLoaded] = useState({
         hero: false,
-        modal: false,
+    
         valueCreation: false,
-        whyChooseUs: false
+     
     });
 
     // Check if all components are loaded
@@ -34,7 +34,7 @@ export default function WhoWeAreDetail() {
                 hero: true,
                 modal: true,
                 valueCreation: true,
-                whyChooseUs: true
+           
             });
         }, 3000); // Reduced timeout to 3 seconds
         return () => clearTimeout(timeout);
@@ -70,11 +70,11 @@ export default function WhoWeAreDetail() {
                 transition={{ duration: 0.5 }}
             >
                 <WWRHeroSection onLoad={() => handleComponentLoad('hero')} />
-                <IPDModal onLoad={() => handleComponentLoad('modal')} />
+               
                 <IDPValueCreationSection onLoad={() => handleComponentLoad('valueCreation')} />
                 <OurValues onLoad={() => handleComponentLoad("ourValues")} />
                     <VisonandMission></VisonandMission>
-                <WhyChooseUs onLoad={() => handleComponentLoad('whyChooseUs')} />
+                
             </motion.div>
         </>
     )
