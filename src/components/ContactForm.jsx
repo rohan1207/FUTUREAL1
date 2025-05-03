@@ -23,49 +23,41 @@ export default function ContactForm() {
     }
   };
 
-  const subjectOptions = [
-    "Individual",
-    "Corporate",
-    "Others"
-  ];
+  const subjectOptions = ["Individual", "Corporate", "Others"];
 
-  const companyOptions = [
-    "Individual",
-    "Corporate",
-    "Others"
-  ];
+  const companyOptions = ["Individual", "Corporate", "Others"];
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
-    
+
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
     } else if (!/^[0-9+\-\s()]{10,}$/.test(formData.phone)) {
       newErrors.phone = "Please enter a valid phone number";
     }
-    
+
     if (!formData.subject) {
       newErrors.subject = "Please select a subject";
     } else if (formData.subject === "Others" && !formData.otherSubject.trim()) {
       newErrors.otherSubject = "Please specify your subject";
     }
-    
+
     if (!formData.company) {
       newErrors.company = "Please select a company type";
     } else if (formData.company === "Others" && !formData.otherCompany.trim()) {
       newErrors.otherCompany = "Please specify your company type";
     }
-    
+
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
     }
@@ -76,7 +68,7 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -85,14 +77,22 @@ export default function ContactForm() {
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
-Subject: ${formData.subject === "Others" ? formData.otherSubject : formData.subject}
-Company: ${formData.company === "Others" ? formData.otherCompany : formData.company}
+Subject: ${
+      formData.subject === "Others" ? formData.otherSubject : formData.subject
+    }
+Company: ${
+      formData.company === "Others" ? formData.otherCompany : formData.company
+    }
 
 Message:
 ${formData.message}
     `.trim();
 
-    const mailtoLink = `mailto:marketing@futureal.in?subject=${encodeURIComponent(`New Contact Form Submission from ${formData.name}`)}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(formData.email)}`;
+    const mailtoLink = `mailto:marketing@futureal.in?subject=${encodeURIComponent(
+      `New Contact Form Submission from ${formData.name}`
+    )}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(
+      formData.email
+    )}`;
 
     window.location.href = mailtoLink;
     setStatus("Opening your email client...");
@@ -103,36 +103,41 @@ ${formData.message}
       return;
     }
 
-    const message = 
-`New Contact Form Submission
+    const message = `New Contact Form Submission
 
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
-Subject: ${formData.subject === "Others" ? formData.otherSubject : formData.subject}
-Company: ${formData.company === "Others" ? formData.otherCompany : formData.company}
+Subject: ${
+      formData.subject === "Others" ? formData.otherSubject : formData.subject
+    }
+Company: ${
+      formData.company === "Others" ? formData.otherCompany : formData.company
+    }
 
 Message:
 ${formData.message}`;
 
     try {
       const encodedMessage = message
-        .split('\n')
-        .map(line => encodeURIComponent(line))
-        .join('%0A');
+        .split("\n")
+        .map((line) => encodeURIComponent(line))
+        .join("%0A");
 
       // For mobile devices, open WhatsApp app directly
       if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         window.location.href = `whatsapp://send?phone=918792702999&text=${encodedMessage}`;
       } else {
         // For desktop, open WhatsApp Web
-        window.open(`https://web.whatsapp.com/send?phone=919823149491&text=${encodedMessage}`, '_blank');
+        window.open(
+          `https://web.whatsapp.com/send?phone=919823149491&text=${encodedMessage}`,
+          "_blank"
+        );
       }
-      
     } catch (error) {
-      console.error('Error creating WhatsApp link:', error);
+      console.error("Error creating WhatsApp link:", error);
       // Fallback to basic WhatsApp link
-      window.open(`https://wa.me/919823149491`, '_blank');
+      window.open(`https://wa.me/919823149491`, "_blank");
     }
   };
 
@@ -166,8 +171,8 @@ ${formData.message}`;
             WhatsApp Direct Connect
           </h3>
           <p className="text-gray-700 text-sm sm:text-base">
-            Start a conversation with us instantly on WhatsApp. Our team is ready
-            to assist you.
+            Start a conversation with us instantly on WhatsApp. Our team is
+            ready to assist you.
           </p>
         </div>
       )}
@@ -182,9 +187,13 @@ ${formData.message}`;
             placeholder="Your Name *"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full p-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg text-sm md:text-base`}
+            className={`w-full p-3 border ${
+              errors.name ? "border-red-500" : "border-gray-300"
+            } rounded-lg text-sm md:text-base`}
           />
-          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+          {errors.name && (
+            <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+          )}
         </div>
 
         <div>
@@ -194,9 +203,13 @@ ${formData.message}`;
             placeholder="Email Address *"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full p-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg text-sm md:text-base`}
+            className={`w-full p-3 border ${
+              errors.email ? "border-red-500" : "border-gray-300"
+            } rounded-lg text-sm md:text-base`}
           />
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+          )}
         </div>
 
         <div>
@@ -206,9 +219,13 @@ ${formData.message}`;
             placeholder="Contact Number *"
             value={formData.phone}
             onChange={handleChange}
-            className={`w-full p-3 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg text-sm md:text-base`}
+            className={`w-full p-3 border ${
+              errors.phone ? "border-red-500" : "border-gray-300"
+            } rounded-lg text-sm md:text-base`}
           />
-          {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+          {errors.phone && (
+            <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+          )}
         </div>
 
         <div className="relative w-full">
@@ -217,17 +234,23 @@ ${formData.message}`;
             value={formData.subject}
             onChange={handleChange}
             className={`w-full p-3 border ${
-              errors.subject ? 'border-red-500' : 'border-gray-300'
+              errors.subject ? "border-red-500" : "border-gray-300"
             } rounded-lg bg-white text-sm md:text-base appearance-none`}
           >
             <option value="">Select Subject *</option>
             {subjectOptions.map((option, index) => (
-              <option key={index} value={option}>{option}</option>
+              <option key={index} value={option}>
+                {option}
+              </option>
             ))}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+            <svg
+              className="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
             </svg>
           </div>
           {errors.subject && (
@@ -243,7 +266,7 @@ ${formData.message}`;
               value={formData.otherSubject}
               onChange={handleChange}
               className={`w-full p-3 border ${
-                errors.otherSubject ? 'border-red-500' : 'border-gray-300'
+                errors.otherSubject ? "border-red-500" : "border-gray-300"
               } rounded-lg text-sm md:text-base h-20 resize-none`}
             ></textarea>
             {errors.otherSubject && (
@@ -258,17 +281,23 @@ ${formData.message}`;
             value={formData.company}
             onChange={handleChange}
             className={`w-full p-3 border ${
-              errors.company ? 'border-red-500' : 'border-gray-300'
+              errors.company ? "border-red-500" : "border-gray-300"
             } rounded-lg bg-white text-sm md:text-base appearance-none`}
           >
             <option value="">Select Company *</option>
             {companyOptions.map((option, index) => (
-              <option key={index} value={option}>{option}</option>
+              <option key={index} value={option}>
+                {option}
+              </option>
             ))}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+            <svg
+              className="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
             </svg>
           </div>
           {errors.company && (
@@ -284,7 +313,7 @@ ${formData.message}`;
               value={formData.otherCompany}
               onChange={handleChange}
               className={`w-full p-3 border ${
-                errors.otherCompany ? 'border-red-500' : 'border-gray-300'
+                errors.otherCompany ? "border-red-500" : "border-gray-300"
               } rounded-lg text-sm md:text-base h-20 resize-none`}
             ></textarea>
             {errors.otherCompany && (
@@ -299,9 +328,13 @@ ${formData.message}`;
             placeholder="Your Message... *"
             value={formData.message}
             onChange={handleChange}
-            className={`w-full p-3 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-lg h-24 text-sm md:text-base`}
+            className={`w-full p-3 border ${
+              errors.message ? "border-red-500" : "border-gray-300"
+            } rounded-lg h-24 text-sm md:text-base`}
           ></textarea>
-          {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+          {errors.message && (
+            <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+          )}
         </div>
 
         {/* Conditional Rendering for Buttons */}
