@@ -123,7 +123,7 @@ ${formData.message}`;
 
       // For mobile devices, open WhatsApp app directly
       if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        window.location.href = `whatsapp://send?phone=919823149491&text=${encodedMessage}`;
+        window.location.href = `whatsapp://send?phone=918792702999&text=${encodedMessage}`;
       } else {
         // For desktop, open WhatsApp Web
         window.open(`https://web.whatsapp.com/send?phone=919823149491&text=${encodedMessage}`, '_blank');
@@ -160,15 +160,17 @@ ${formData.message}`;
           WhatsApp
         </button>
       </div>
-      <div className="w-full bg-[#DCF8C6] border border-green-300 rounded-lg p-4 sm:p-5 mb-6">
-        <h3 className="text-lg sm:text-xl font-semibold text-black">
-          WhatsApp Direct Connect
-        </h3>
-        <p className="text-gray-700 text-sm sm:text-base">
-          Start a conversation with us instantly on WhatsApp. Our team is ready
-          to assist you.
-        </p>
-      </div>
+      {isWhatsApp && (
+        <div className="w-full bg-[#DCF8C6] border border-green-300 rounded-lg p-4 sm:p-5 mb-6">
+          <h3 className="text-lg sm:text-xl font-semibold text-black">
+            WhatsApp Direct Connect
+          </h3>
+          <p className="text-gray-700 text-sm sm:text-base">
+            Start a conversation with us instantly on WhatsApp. Our team is ready
+            to assist you.
+          </p>
+        </div>
+      )}
       <form
         onSubmit={isWhatsApp ? (e) => e.preventDefault() : handleSubmit}
         className="space-y-4 max-w-full"

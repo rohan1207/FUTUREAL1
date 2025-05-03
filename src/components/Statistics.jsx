@@ -6,39 +6,26 @@ const stats = [
   {
     id: 1,
     startValue: 0,
-    endValue: 50,
+    endValue: 30,
     suffix: "+",
-    label: "Years of Collective Experience",
+    label: "Clients",
     duration: 2,
-    icon: "⏳",
   },
   {
     id: 2,
     startValue: 0,
-    endValue: 15,
+    endValue: 40,
     suffix: "+",
-    label: "Clients",
+    label: "Projects",
     duration: 2,
-    icon: "👥",
   },
   {
     id: 3,
-    startValue: 0,
-    endValue: 1000000,
-    suffix: "+",
+    startValue: 1,
+    endValue: "1",
+    suffix: " Million+",
     label: "Sq. ft. Delivered",
-    duration: 2.5,
-    format: true,
-    icon: "📐",
-  },
-  {
-    id: 4,
-    startValue: 0,
-    endValue: 50,
-    suffix: "+",
-    label: "Projects Completed",
-    duration: 2,
-    icon: "🏗️",
+    duration: 1,
   },
 ];
 
@@ -111,7 +98,7 @@ export default function Statistics() {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-32 relative overflow-hidden bg-gradient-to-b from-black via-[#0a0a0a] to-black">
+    <section className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-b from-black via-[#0a0a0a] to-black">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:14px_24px]"></div>
@@ -128,22 +115,24 @@ export default function Statistics() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Our Impact in Numbers
+            Our Impact In Numbers
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] mx-auto"></div>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-          {stats.map((stat) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
+          {stats.map((stat, index) => (
             <motion.div
               key={stat.id}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: stat.id * 0.1 }}
-              className="relative group"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`relative group ${
+                index === 2 && "md:col-span-1 col-span-2"
+              }`}
             >
-              <div className="p-6 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 hover:bg-black/50 transition-all duration-300 transform hover:scale-105 hover:border-white/20">
-                <div className="text-5xl font-bold bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] bg-clip-text text-transparent mb-4">
+              <div className="p-4 md:p-5 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 hover:bg-black/50 transition-all duration-300 transform hover:scale-105 hover:border-white/20 h-full flex flex-col justify-center items-center">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] bg-clip-text text-transparent mb-3">
                   <Counter
                     startValue={stat.startValue}
                     endValue={stat.endValue}
@@ -152,7 +141,9 @@ export default function Statistics() {
                     format={stat.format}
                   />
                 </div>
-                <div className="text-sm text-gray-300">{stat.label}</div>
+                <div className="text-sm md:text-base text-gray-300 text-center">
+                  {stat.label}
+                </div>
               </div>
             </motion.div>
           ))}

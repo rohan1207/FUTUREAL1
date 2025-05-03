@@ -44,6 +44,14 @@ const Footer = () => {
               >
                 <FaInstagram className="w-4 h-4 text-white group-hover:text-white" />
               </a>
+              <a
+                href="https://www.linkedin.com/company/futureal-in/"
+                className="bg-white/10 hover:bg-gradient-to-r hover:from-[#2A72F8] hover:to-[#8F44EC] transition-all duration-300 p-2.5 rounded-full group"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedinIn className="w-4 h-4 text-white group-hover:text-white" />
+              </a>
             </div>
           </div>
 
@@ -83,7 +91,7 @@ const Footer = () => {
                   <span className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     →
                   </span>
-                  what We Do
+                  What We Do
                 </Link>
               </li>
               <li>
@@ -94,7 +102,7 @@ const Footer = () => {
                   <span className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     →
                   </span>
-                  who We Are
+                  Who We Are
                 </Link>
               </li>
             </ul>
@@ -113,15 +121,14 @@ const Footer = () => {
                 className="text-gray-300 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] text-sm flex items-center gap-3 group"
               >
                 <HiOutlineLocationMarker className="w-5 h-5 text-gray-400 group-hover:text-[#2A72F8] transition-colors" />
-                72/12, Nallurahalli Main Rd, Near Shell Petrol Pump, Whitefield,
-                Bangalore - 560066
+                72/12, Nallurahalli Main Rd, near, Siddapura, Whitefield, Bengaluru, Karnataka 560066
               </a>
               <a
                 href="tel:+91 96060 64203"
                 className="text-gray-300 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] text-sm flex items-center gap-3 group"
               >
                 <HiOutlinePhone className="w-5 h-5 text-gray-400 group-hover:text-[#2A72F8] transition-colors" />
-                +91 9606064203
+                +91 8792702999
               </a>
               <a
                 href="mailto:info@futureal.com"

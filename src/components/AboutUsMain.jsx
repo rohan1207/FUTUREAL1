@@ -15,10 +15,16 @@ const AboutUsMain = () => {
   return (
     <div
       ref={sectionRef}
-      className="bg-[#f8f8f8] min-h-screen relative overflow-hidden py-20"
+      className="bg-[#000000] min-h-screen relative overflow-hidden py-20"
     >
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#050505]/40 to-[#0f172a]/60" />
+       
+      </div>
+
       {/* Main Content */}
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Founder Section */}
         <motion.div
           className="max-w-6xl mx-auto mb-24"
@@ -26,66 +32,70 @@ const AboutUsMain = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 1 }}
         >
-          <div className="grid md:grid-cols-12 gap-8 items-start">
-            {/* Founder Image - Smaller and closer to text */}
+          <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Founder Image */}
             <motion.div
-              className="md:col-span-4 relative max-w-[240px] mx-auto md:mx-0"
+              className="md:col-span-4 relative max-w-[280px] mx-auto md:mx-0"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="overflow-hidden rounded-lg">
-                <img
-                  src="/Founder.png"
-                  alt="Founder"
-                  className="w-full h-auto aspect-[3/4] object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                />
-              </div>
+              <div className="relative group">
+                <div className="overflow-hidden rounded-xl">
+                  <img
+                    src="/Founder.png"
+                    alt="Founder"
+                    className="w-full h-auto aspect-[3/4] object-cover object-center transform group-hover:scale-105 transition-all duration-700"
+                  />
+                </div>
+                </div>
             </motion.div>
 
-            {/* Founder Info - Adjusted spacing and grid position */}
+            {/* Founder Info */}
             <motion.div
-              className="md:col-span-8 space-y-6"
+              className="md:col-span-8 space-y-6 px-4 sm:px-6 md:px-0"
               initial={{ opacity: 0, x: 20 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div>
-                <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-3">
+                <h2 className="text-3xl md:text-4xl font-light text-white mb-3">
                   Our Founder
                 </h2>
-                <div className="h-0.5 w-16 bg-gray-900 mb-6" />
+                <div className="h-0.5 w-16 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] mb-6" />
               </div>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-sm md:text-base">
                 A 3x founder with 22 years of experience in Project Management,
-                Real Estate Development, Private Equity Investments &
-                Entrepreneurship. Abhishek has managed multiple projects working
-                with companies like Bovis Lend Lease, OTZ, Ochziff & ABIL to
-                name a few SAP labs compuses, Philips Software, Metro Cash &
-                Carry, Coca-Cola, Honeywell, West In Hotel, W Resort & multiple
-                luxury residential developments.
+                Real Estate Development and Private Equity. He started his
+                entrepreneurial journey 10 years back and went on to establish
+                multiple businesses like Futureal, Tealwalls Technologies, Covie
+                Ventures. He has worked with companies like Bovis Lend Lease,
+                DTZ, Och-Ziff and ABIL to name a few. He has been involved with
+                projects for companies like SAP Labs, Philips Software,
+                Honeywell, Metro Cash & Carry, Coca-Cola and luxury developments
+                like Castle Royale, God's Blessings and Hospitality projects
+                like Westin - Pune and W Resort Goa.
               </p>
-              <p className="text-gray-700 leading-relaxed">
-                Abhishek has been an entrepreneur for the last 10 years building
-                businesses in the interior fit-out space and coliving (under
-                Covie). Abhishek holds a civil engineering degree with a
-                post-graduation in construction management from XIME Bangalore.
-                He has also done his executive management program at IIM
-                Colrutto & Ivey League Cornell University.
+              <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                He holds a Civil Engineering degree with a PG in Construction
+                Management from XIME Bangalore. He also did his executive
+                management programs from IIM Calcutta and Cornell University. He
+                was instrumental in building Covie as a Co-Founder and establish
+                it as one of the most sought after premium student housing and
+                coliving brand in the country.
               </p>
             </motion.div>
           </div>
         </motion.div>
 
-        {/* Team Section */}
+        {/* Team Section Placeholder */}
         <motion.div
           className="max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 1, delay: 0.4 }}
         >
-          
-
+          {/* Future team content can go here */}
         </motion.div>
       </div>
     </div>

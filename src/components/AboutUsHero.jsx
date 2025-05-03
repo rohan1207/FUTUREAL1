@@ -54,7 +54,7 @@ export default function WWRHeroSection({ onLoad }) {
         style={{ animation: 'fadeIn 1s ease-in-out' }}
         onLoadedData={() => onLoad?.()}
       >
-        <source src="/bgv.mp4" type="video/mp4" />
+        <source src="/team.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 

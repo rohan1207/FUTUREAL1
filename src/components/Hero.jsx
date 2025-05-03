@@ -226,10 +226,10 @@ const Hero = ({ onLoad }) => {
             className="text-4xl md:text-6xl font-bold leading-tight mb-6"
           >
             <motion.span variants={itemVariants}>
-              Designing Spaces,
+            Creating spaces,
               <br />
               <span className="bg-gradient-to-r from-sky-400 to-purple-500 bg-clip-text text-transparent">
-                Defining Experiences
+              Defining Experiences
               </span>
             </motion.span>
           </motion.h1>

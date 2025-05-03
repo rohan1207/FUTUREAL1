@@ -118,6 +118,8 @@ const WhatWeDo = ({ onLoad }) => {
       { title: "Educational Spaces", img: "/school3.jpg" },
       { title: "Healthcare Spaces", img: "/hospital3.jpg" },
       { title: "Industrial Spaces", img: "/industrialspace.jpg" },
+      { title: "Commercial Spaces", img: "/commercial.jpg" },
+      { title: "Co-Living/Hospitality", img: "/co-living.jpg" },
     ],
     []
   );
@@ -382,7 +384,8 @@ const WhatWeDo = ({ onLoad }) => {
 
           {/* Desktop: Enhanced Grid */}
           <div className="hidden md:grid grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {sectors.map((sector, index) => (
+            {/* First row - 3 items */}
+            {sectors.slice(0, 3).map((sector, index) => (
               <motion.div
                 key={index}
                 className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-900"
@@ -427,6 +430,56 @@ const WhatWeDo = ({ onLoad }) => {
                 />
               </motion.div>
             ))}
+
+            {/* Second row - 2 items centered */}
+            <div className="col-span-3 flex justify-center gap-8 mt-8">
+              {sectors.slice(3).map((sector, index) => (
+                <motion.div
+                  key={index + 3}
+                  className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-900"
+                  style={{ width: "calc(33.333% - 1rem)" }}
+                  variants={fadeInUp}
+                  custom={index + 3}
+                  whileHover={{ y: -10 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {/* Background Image */}
+                  <motion.div
+                    className="absolute inset-0 w-full h-full"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <img
+                      src={sector.img}
+                      alt={sector.title}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </motion.div>
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+
+                  {/* Content */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-end transform transition-transform duration-500">
+                    <motion.h3
+                      className="text-2xl font-light text-white mb-4 relative"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      {sector.title}
+                      <div className="h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] transition-all duration-500" />
+                    </motion.h3>
+                  </div>
+
+                  {/* Hover Effect Border */}
+                  <motion.div
+                    className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur"
+                    style={{ zIndex: -1 }}
+                  />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>

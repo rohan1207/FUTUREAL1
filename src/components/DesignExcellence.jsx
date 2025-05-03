@@ -58,14 +58,14 @@ const DesignExcellence = ({ onLoad }) => {
             initial={{ x: "-100%" }}
             className="text-7xl md:text-9xl font-extralight text-white/90 tracking-wider"
           >
-            design
+            Beyond Construction
           </motion.h1>
           <motion.h1
             style={{ x: excellenceX }}
             initial={{ x: "100%" }}
             className="text-7xl md:text-9xl font-extralight text-white/90 tracking-wider"
           >
-            excellence
+           Into Experience
           </motion.h1>
         </div>
 
@@ -75,9 +75,7 @@ const DesignExcellence = ({ onLoad }) => {
           initial={{ opacity: 0, scale: 0.8 }}
           className="mt-16 text-xl md:text-2xl text-gray-300/90 text-center max-w-2xl mx-auto leading-relaxed"
         >
-          You can make meaningful change through design.
-          <br />
-          Let us show you how
+        Meaningful change starts with how we build. We're here to lead the way.<br/> - You can make meaningful change through design.<br/>Let us show you how
         </motion.p>
       </div>
     </div>
