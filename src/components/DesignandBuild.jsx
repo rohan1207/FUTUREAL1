@@ -76,9 +76,9 @@ export const DesignandBuild = () => {
           muted
           loop
           playsInline
-          className="absolute w-full h-full object-cover scale-105"
+          className="absolute w-full h-full object-cover"
         >
-          <source src="/DB.mp4" type="video/mp4" />
+          <source src="/dbv.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -95,7 +95,7 @@ export const DesignandBuild = () => {
             transition={{ duration: 0.3 }}
           >
             <span className="relative">
-              <span className="relative z-10">DESIGN AND BUILD</span>
+              <span className="relative z-10">DESIGN & BUILD</span>
               <motion.span
                 className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC]"
                 initial={{ width: "0%" }}

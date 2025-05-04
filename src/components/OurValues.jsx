@@ -57,7 +57,7 @@ const OurValues = ({ onLoad }) => {
 
   useEffect(() => {
     const img = new Image();
-    img.src = "/background.avif";
+    img.src = "/value.avif"; // Preload the background image
     img.onload = () => {
       setBgLoaded(true);
       onLoad?.();
@@ -77,7 +77,7 @@ const OurValues = ({ onLoad }) => {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/background.avif"
+          src="/value.avif"
           alt="Background"
           onLoad={() => setBgLoaded(true)}
           className="w-full h-full object-cover"

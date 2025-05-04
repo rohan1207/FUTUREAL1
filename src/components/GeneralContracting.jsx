@@ -78,7 +78,7 @@ export const GeneralContracting = () => {
           muted
           loop
           playsInline
-          className="absolute w-full h-full object-cover scale-105"
+          className="absolute w-full h-full object-cover"
         >
           <source src="/GC.mp4" type="video/mp4" />
         </video>

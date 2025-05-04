@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 export default function WWRHeroSection({ onLoad }) {
   const contentRef = useRef(null);
@@ -19,7 +19,7 @@ export default function WWRHeroSection({ onLoad }) {
   };
 
   const handleButtonClick = () => {
-    if (window.innerWidth <= 768) setOpen(prev => !prev); // toggle on mobile
+    if (window.innerWidth <= 768) setOpen((prev) => !prev); // toggle on mobile
   };
 
   // Animation Variants
@@ -31,7 +31,7 @@ export default function WWRHeroSection({ onLoad }) {
       transition: {
         staggerChildren: 0.2,
         duration: 0.8,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
   };
@@ -51,7 +51,11 @@ export default function WWRHeroSection({ onLoad }) {
         playsInline
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ animation: 'fadeIn 1s ease-in-out' }}
+        style={{
+          animation: "fadeIn 1s ease-in-out",
+          objectFit: "cover",
+          objectPosition: "center",
+        }}
         onLoadedData={() => onLoad?.()}
       >
         <source src="/team.mp4" type="video/mp4" />
@@ -75,11 +79,9 @@ export default function WWRHeroSection({ onLoad }) {
             className="text-4xl md:text-6xl font-bold leading-tight mb-6"
           >
             <motion.span variants={itemVariants}>
-          <br />
+              <br />
               <span className="bg-gradient-to-r from-sky-400 to-purple-500 bg-clip-text text-transparent">
-               
-             About Us
-
+                About Us
               </span>
             </motion.span>
           </motion.h1>
@@ -88,8 +90,10 @@ export default function WWRHeroSection({ onLoad }) {
             variants={itemVariants}
             className="text-lg md:text-xl text-white/90 max-w-3xl mb-8"
           >
-           We specialise in turnkey solutions for healthcare, industrial, hospitality, office spaces and educational sectors. Leveraging our global experience and local expertise, we bring your vision to life seamlessly and efficiently
-
+            We specialise in turnkey solutions for healthcare, industrial,
+            hospitality, office spaces and educational sectors. Leveraging our
+            global experience and local expertise, we bring your vision to life
+            seamlessly and efficiently
           </motion.p>
 
           {/* Dropdown */}
@@ -100,8 +104,6 @@ export default function WWRHeroSection({ onLoad }) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-           
-
             <AnimatePresence>
               {open && (
                 <motion.ul
@@ -111,18 +113,20 @@ export default function WWRHeroSection({ onLoad }) {
                   transition={{ duration: 0.3 }}
                   className="absolute mt-2 w-56 bg-white text-black rounded-lg shadow-lg z-50"
                 >
-                  {['Design & Build', 'General Contracting'].map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => {
-                        console.log(`Selected: ${item}`);
-                        setOpen(false);
-                      }}
-                    >
-                      {item}
-                    </li>
-                  ))}
+                  {["Design & Build", "General Contracting"].map(
+                    (item, idx) => (
+                      <li
+                        key={idx}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => {
+                          console.log(`Selected: ${item}`);
+                          setOpen(false);
+                        }}
+                      >
+                        {item}
+                      </li>
+                    )
+                  )}
                 </motion.ul>
               )}
             </AnimatePresence>
