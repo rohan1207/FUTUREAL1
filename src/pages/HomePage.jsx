@@ -5,10 +5,8 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import OurProcess from "../components/OurProcess";
-import Footer from "../components/Footer";
 import DesignExcellence from "../components/DesignExcellence";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Statistics from "../components/Statistics";

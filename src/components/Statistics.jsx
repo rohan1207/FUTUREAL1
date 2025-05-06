@@ -27,6 +27,14 @@ const stats = [
     label: "Sq. ft. Delivered",
     duration: 1,
   },
+  {
+    id: 4,
+    startValue: 1,
+    endValue: 50,
+    suffix: " + years of ",
+    label: " collective experience",
+    duration: 1,
+  },
 ];
 
 const Counter = ({
@@ -98,8 +106,8 @@ export default function Statistics() {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-b from-black via-[#0a0a0a] to-black">
-      {/* Background Pattern */}
+    <section className="py-12 md:py-24 relative overflow-hidden bg-gradient-to-b from-black via-[#0a0a0a] to-black">
+      {/* Enhanced Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:14px_24px]"></div>
       </div>
@@ -112,7 +120,7 @@ export default function Statistics() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Our Impact In Numbers
@@ -120,29 +128,105 @@ export default function Statistics() {
           <div className="w-20 h-1 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] mx-auto"></div>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
+        {/* Desktop View - Single Row */}
+        <div className="hidden lg:grid lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.id}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative group ${
-                index === 2 && "md:col-span-1 col-span-2"
-              }`}
+              className="relative group"
             >
-              <div className="p-4 md:p-5 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 hover:bg-black/50 transition-all duration-300 transform hover:scale-105 hover:border-white/20 h-full flex flex-col justify-center items-center">
-                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] bg-clip-text text-transparent mb-3">
-                  <Counter
-                    startValue={stat.startValue}
-                    endValue={stat.endValue}
-                    duration={stat.duration}
-                    suffix={stat.suffix}
-                    format={stat.format}
-                  />
+              <div className="min-h-[160px] p-4 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 hover:bg-black/50 transition-all duration-300 transform hover:scale-105 hover:border-white/20 flex flex-col justify-center items-center group">
+                {/* Gradient Background on Hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2A72F8]/5 to-[#8F44EC]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Content */}
+                <div className="relative z-10 w-full text-center px-2">
+                  <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] bg-clip-text text-transparent mb-2 break-words">
+                    <Counter
+                      startValue={stat.startValue}
+                      endValue={stat.endValue}
+                      duration={stat.duration}
+                      suffix={stat.suffix}
+                      format={stat.format}
+                    />
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-sm md:text-base text-gray-300 text-center">
-                  {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Mobile/Tablet View - Custom Layout */}
+        <div className="lg:hidden flex flex-col gap-6 max-w-lg mx-auto">
+          {/* First Row - 2 stats side by side */}
+          <div className="grid grid-cols-2 gap-6 justify-center">
+            {stats.slice(0, 2).map((stat, index) => (
+              <motion.div
+                key={stat.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                }
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative group"
+              >
+                <div className="min-h-[140px] p-3 sm:p-4 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 hover:bg-black/50 transition-all duration-300 transform hover:scale-105 hover:border-white/20 flex flex-col justify-center items-center group">
+                  {/* Gradient Background on Hover */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2A72F8]/5 to-[#8F44EC]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  {/* Content */}
+                  <div className="relative z-10 w-full text-center px-1">
+                    <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] bg-clip-text text-transparent mb-2">
+                      <Counter
+                        startValue={stat.startValue}
+                        endValue={stat.endValue}
+                        duration={stat.duration}
+                        suffix={stat.suffix}
+                        format={stat.format}
+                      />
+                    </div>
+                    <div className="text-xs sm:text-sm text-gray-300 font-medium">
+                      {stat.label}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Second and Third Rows - Full width stats */}
+          {stats.slice(2).map((stat, index) => (
+            <motion.div
+              key={stat.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: (index + 2) * 0.1 }}
+              className="relative group"
+            >
+              <div className="min-h-[120px] p-4 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 hover:bg-black/50 transition-all duration-300 transform hover:scale-105 hover:border-white/20 flex flex-col justify-center items-center group">
+                {/* Gradient Background on Hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2A72F8]/5 to-[#8F44EC]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Content */}
+                <div className="relative z-10 w-full text-center px-2">
+                  <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] bg-clip-text text-transparent mb-2">
+                    <Counter
+                      startValue={stat.startValue}
+                      endValue={stat.endValue}
+                      duration={stat.duration}
+                      suffix={stat.suffix}
+                      format={stat.format}
+                    />
+                  </div>
+                  <div className="text-xs sm:text-sm text-gray-300 font-medium">
+                    {stat.label}
+                  </div>
                 </div>
               </div>
             </motion.div>

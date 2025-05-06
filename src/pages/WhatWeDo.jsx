@@ -347,9 +347,7 @@ const WhatWeDo = ({ onLoad }) => {
                     <h3 className="text-2xl font-light mb-2">
                       {sectors[currentIndex].title}
                     </h3>
-                    <p className="text-sm text-gray-300 opacity-90">
-                      Discover our expertise in creating innovative spaces
-                    </p>
+                  
                   </motion.div>
                 </motion.div>
               </AnimatePresence>

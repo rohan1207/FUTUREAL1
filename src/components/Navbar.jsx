@@ -101,7 +101,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between mb-8">
               <Link to="/" onClick={() => setIsOpen(false)}>
                 <img
-                  src="/newlogo.png"
+                  src="/FLogo.png"
                   alt="Logo"
                   className="h-10 object-contain"
                 />
