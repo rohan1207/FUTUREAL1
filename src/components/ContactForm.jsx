@@ -130,19 +130,19 @@ ${formData.message}`;
       } else {
         // For desktop, open WhatsApp Web
         window.open(
-          `https://web.whatsapp.com/send?phone=919823149491&text=${encodedMessage}`,
+          `https://web.whatsapp.com/send?phone=918792702999&text=${encodedMessage}`,
           "_blank"
         );
       }
     } catch (error) {
       console.error("Error creating WhatsApp link:", error);
       // Fallback to basic WhatsApp link
-      window.open(`https://wa.me/919823149491`, "_blank");
+      window.open(`https://wa.me/918792702999`, "_blank");
     }
   };
 
   return (
-    <div className="mt-[px] lg:mt-[86px] px-4 sm:px-8">
+    <div className="mt-[180px] lg:mt-[86px] px-4 sm:px-8 z-0">
       <h2 className="text-lg font-semibold mb-4">Send Us a Message</h2>
 
       {/* Toggle Between Email & WhatsApp */}

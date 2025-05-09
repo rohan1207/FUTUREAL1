@@ -2,7 +2,7 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 export default function ContactInfo() {
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-start p-4 sm:p-6 gap-6 sm:gap-8 w-full max-w-4xl mx-auto">
+    <div className="flex flex-col sm:flex-row justify-between items-start p-4 sm:p-6 gap-6 sm:gap-8 w-full max-w-4xl mx-auto z-10 ">
       {/* Address */}
       <div className="flex items-start gap-3 w-full sm:w-1/3">
         <div className="w-10 h-10 sm:w-9 sm:h-9 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] rounded-lg flex justify-center items-center shrink-0">
