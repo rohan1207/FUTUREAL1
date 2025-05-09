@@ -31,7 +31,7 @@ const stats = [
     id: 4,
     startValue: 1,
     endValue: 50,
-    suffix: " + years of ",
+    suffix: "+ years of ",
     label: " collective experience",
     duration: 1,
   },
