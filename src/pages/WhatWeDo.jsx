@@ -117,9 +117,9 @@ const WhatWeDo = ({ onLoad }) => {
     () => [
       { title: "Educational Spaces", img: "/school3.jpg" },
       { title: "Healthcare Spaces", img: "/hospital3.jpg" },
-      { title: "Industrial Spaces", img: "/industrialspace.jpg" },
+      { title: "Industrial Spaces", img: "/ind.jpg" },
       { title: "Commercial Spaces", img: "/commercial.jpg" },
-      { title: "Co-Living/Hospitality", img: "/co-living.jpg" },
+      { title: "Co-Living/Hospitality", img: "/co.jpg" },
     ],
     []
   );

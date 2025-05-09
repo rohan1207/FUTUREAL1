@@ -78,7 +78,7 @@ export default function WWRHeroSection({ onLoad }) {
             Who We Are<br />
               <span className="bg-gradient-to-r from-sky-400 to-purple-500 bg-clip-text text-transparent">
                
-Shaping the future of spaces, one project at a time
+Shaping the future of spaces
 
               </span>
             </motion.span>

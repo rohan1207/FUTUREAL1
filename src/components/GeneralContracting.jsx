@@ -64,7 +64,7 @@ export const GeneralContracting = () => {
   return (
     <motion.section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-black pt-24"
+      className="relative min-h-screen overflow-hidden bg-black pt-24 z-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

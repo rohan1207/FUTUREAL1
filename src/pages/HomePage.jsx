@@ -81,8 +81,8 @@ export default function HomePage() {
 
       {/* Design Excellence Section with Diagonal Cut */}
       <section className="relative">
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-10" />
-        <div className="clip-diagonal-top bg-black">
+        <div className="absolute top-0 left-0 w-full h-32   z-10" />
+        <div className="clip-diagonal-top">
           <DesignExcellence
             onLoad={() => handleComponentLoad("designExcellence")}
           />

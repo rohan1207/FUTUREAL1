@@ -62,7 +62,7 @@ export const DesignandBuild = () => {
   return (
     <motion.section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-black pt-24"
+      className="relative min-h-screen overflow-hidden bg-black pt-24 z-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -107,7 +107,7 @@ export const DesignandBuild = () => {
 
           <motion.p
             style={{ scale: textScale }}
-            className="text-lg sm:text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] font-light tracking-wide"
+            className="text-lg sm:text-xl md:text-2xl text-transparent bg-clip-text font-light tracking-wide text-white"
           >
             End-to-End Design and Construction Services
           </motion.p>

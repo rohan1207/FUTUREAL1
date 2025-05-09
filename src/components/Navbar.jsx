@@ -9,7 +9,7 @@ const menuItems = [
   { name: "Meet Our Team", path: "/about" },
 ];
 
-const rightLinks = [{ name: "Newsletter", path: "/newsletter" }];
+const rightLinks = [{ name: "Blogs", path: "/Blogs", disabled: true }];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,16 +52,25 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Right Side */}
-          <div className="hidden md:flex items-center gap-6 ml-auto text-white text-sm font-medium">
-            {rightLinks.map((item, index) => (
-              <Link
-                key={index}
-                to={item.path}
-                className="hover:text-[#8F44EC] transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center gap-6 ml-auto text-white text-sm font-medium disable-select">
+            {rightLinks.map((item, index) =>
+              item.disabled ? (
+                <span
+                  key={index}
+                  className="text-gray-500 cursor-not-allowed transition-colors"
+                >
+                  {item.name}
+                </span>
+              ) : (
+                <Link
+                  key={index}
+                  to={item.path}
+                  className="hover:text-[#8F44EC] transition-colors"
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
             <motion.button
               className="bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] text-white px-5 py-2 rounded-full text-sm font-medium hover:from-[#1E5FD8] hover:to-[#7D3AD8] transition-all transform hover:scale-[1.02] active:scale-[0.98]"
               whileHover={{ scale: 1.05 }}
@@ -113,16 +122,25 @@ const Navbar = () => {
 
             {/* Menu Items */}
             <div className="flex flex-col items-start gap-5">
-              {[...menuItems, ...rightLinks].map((item, index) => (
-                <Link
-                  key={index}
-                  to={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className="text-white text-lg font-medium hover:text-[#8F44EC] transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {[...menuItems, ...rightLinks].map((item, index) =>
+                item.disabled ? (
+                  <span
+                    key={index}
+                    className="text-gray-500 cursor-not-allowed transition-colors text-lg font-medium"
+                  >
+                    {item.name}
+                  </span>
+                ) : (
+                  <Link
+                    key={index}
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className="text-white text-lg font-medium hover:text-[#8F44EC] transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                )
+              )}
             </div>
 
             {/* Optional: Search */}

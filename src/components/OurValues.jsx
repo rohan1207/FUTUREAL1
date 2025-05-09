@@ -148,7 +148,7 @@ const OurValues = ({ onLoad }) => {
         >
           <p className="text-lg md:text-xl text-white font-medium leading-relaxed">
             <span className="text-white/90">
-              “At <span className="font-semibold text-[#2A72F8]">Futureal</span>, our work is guided by values that ensure consistency, quality, and integrity. We champion <span className="italic">innovation</span>, <span className="italic">transparency</span>, <span className="italic">collaboration</span>, and <span className="italic">accountability</span> — principles that shape how we work with clients, partners, and each other, ensuring every space we touch reflects purpose and professionalism.”
+              “At Futureal , our work is guided by values that ensure consistency, quality, and integrity. We champion <span className="italic">innovation</span>, <span className="italic">transparency</span>, <span className="italic">collaboration</span>, and <span className="italic">accountability</span> — principles that shape how we work with clients, partners, and each other, ensuring every space we touch reflects purpose and professionalism.”
             </span>
           </p>
         </motion.div>
