@@ -27,13 +27,13 @@ export default function VisonandMission({ onLoad }) {
       icon: <Eye className="text-white" size={20} />,
       title: "Vision",
       description:
-        "To revolutionize turnkey project delivery through our specialized Design & Build and General Contracting services, blending innovation, precision, and empathy to craft exceptional experiences and lasting value for our clients and partners.",
+        "To reshape the future of Real Estate by delivering transformative turnkey solutions across Design & Build and General Contracting - blending innovation, precision, and empathy to craft exceptional spaces, enable thriving communities, and create lasting value for our clients and partners.",
     },
     {
       icon: <Target className="text-white" size={20} />,
       title: "Mission",
       description:
-        "To deliver seamless, service-driven turnkey solutions through expert Design & Build and General Contracting offerings, creating exceptional value, optimizing returns, and setting new benchmarks in quality and innovation while upholding the highest industry standards.",
+        "To deliver seamless, service-driven turnkey solutions across Design & Build, General Contracting and Real Estate Development - creating exceptional value, optimizing returns, and setting new benchmarks in quality, innovation, and client experience, while upholding the highest standards of integrity, sustainability, and industry excellence.",
     },
   ];
 

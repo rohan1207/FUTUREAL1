@@ -52,12 +52,12 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Right Side */}
-          <div className="hidden md:flex items-center gap-6 ml-auto text-white text-sm font-medium disable-select">
+          <div className="hidden md:flex items-center gap-6 ml-auto text-white text-sm font-medium ">
             {rightLinks.map((item, index) =>
               item.disabled ? (
                 <span
                   key={index}
-                  className="text-gray-500 cursor-not-allowed transition-colors"
+                  className="text-white cursor-pointer hover:text-[#8F44EC] transition-colors"
                 >
                   {item.name}
                 </span>

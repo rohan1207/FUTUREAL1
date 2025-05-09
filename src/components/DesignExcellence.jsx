@@ -73,7 +73,7 @@ const DesignExcellence = ({ onLoad }) => {
             initial={{ x: "50%" }}
             className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl text-white tracking-wider text-center leading-tight font-bold"
           >
-            Into Experience
+         Building experience
           </motion.h1>
         </div>
 
