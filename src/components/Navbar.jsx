@@ -53,24 +53,7 @@ const Navbar = () => {
 
           {/* Desktop Right Side */}
           <div className="hidden md:flex items-center gap-6 ml-auto text-white text-sm font-medium ">
-            {rightLinks.map((item, index) =>
-              item.disabled ? (
-                <span
-                  key={index}
-                  className="text-white cursor-pointer hover:text-[#8F44EC] transition-colors"
-                >
-                  {item.name}
-                </span>
-              ) : (
-                <Link
-                  key={index}
-                  to={item.path}
-                  className="hover:text-[#8F44EC] transition-colors"
-                >
-                  {item.name}
-                </Link>
-              )
-            )}
+         
             <motion.button
               className="bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] text-white px-5 py-2 rounded-full text-sm font-medium hover:from-[#1E5FD8] hover:to-[#7D3AD8] transition-all transform hover:scale-[1.02] active:scale-[0.98]"
               whileHover={{ scale: 1.05 }}

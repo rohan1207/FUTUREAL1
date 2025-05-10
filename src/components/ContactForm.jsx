@@ -88,7 +88,7 @@ Message:
 ${formData.message}
     `.trim();
 
-    const mailtoLink = `mailto:himanshulokhande41@gmail.com?subject=${encodeURIComponent(
+    const mailtoLink = `mailto: marketing@futureal.in?subject=${encodeURIComponent(
       `New Contact Form Submission from ${formData.name}`
     )}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(
       formData.email

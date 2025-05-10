@@ -254,7 +254,7 @@ const Hero = ({ onLoad }) => {
               onClick={handleButtonClick}
               className="px-6 py-2 bg-white/10 border border-white rounded-full hover:bg-gradient-to-r from-sky-500 to-purple-500 transition-all"
             >
-              What're you looking for ?
+              What are you looking for ?
             </button>
             <AnimatePresence>
               {open && (

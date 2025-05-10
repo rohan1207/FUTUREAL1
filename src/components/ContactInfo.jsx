@@ -18,7 +18,7 @@ export default function ContactInfo() {
             rel="noopener noreferrer"
             className="text-gray-600 text-sm leading-tight mt-1 hover:text-orange-500 transition-colors duration-200 block"
           >
-            72/12, Nallurahalli Main Rd, near, Siddapura,<br></br> Whitefield,
+            72/12, Nallurahalli Main Rd, Siddapura,<br></br> Whitefield,
             Bengaluru, Karnataka 560066
           </a>
         </div>
@@ -59,7 +59,7 @@ export default function ContactInfo() {
               href="mailto:connect@futureal.in"
               className="hover:text-orange-500 transition-colors duration-200"
             >
-              himanshulokhande41@gmail.com
+              marketing@futureal.in
             </a>
           </p>
         </div>
