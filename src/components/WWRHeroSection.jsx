@@ -88,7 +88,7 @@ Shaping the future of spaces
             variants={itemVariants}
             className="text-lg md:text-xl text-white/90 max-w-3xl mb-8"
           >
-          We are a multidisciplinary team of designers, engineers, and project managers dedicated to creating exceptional commercial environments. From high-impact industrial facilities to human-centric healthcare and education spaces, our projects span across sectors and are unified by our commitment to design excellence and flawless execution.
+          We are a multidisciplinary team of designers, engineers, and project managers dedicated to creating exceptional commercial environments. From high-impact industrial facilities to people-centric healthcare and education spaces, our projects span across sectors and are unified by our commitment to design excellence and flawless execution.
 
           </motion.p>
 

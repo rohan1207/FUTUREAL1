@@ -86,16 +86,36 @@ Company: ${
 
 Message:
 ${formData.message}
-    `.trim();
-
-    const mailtoLink = `mailto: marketing@futureal.in?subject=${encodeURIComponent(
+    `.trim(); // Create mailto link
+    const mailtoLink = `mailto:marketing@futureal.in?subject=${encodeURIComponent(
       `New Contact Form Submission from ${formData.name}`
     )}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(
       formData.email
     )}`;
 
-    window.location.href = mailtoLink;
-    setStatus("Opening your email client...");
+    // Create Gmail fallback link
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=marketing@futureal.in&su=${encodeURIComponent(
+      `New Contact Form Submission from ${formData.name}`
+    )}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(
+      formData.email
+    )}`;
+
+    // Try to open email client first
+    const openedMailto = document.createElement("a");
+    openedMailto.href = mailtoLink;
+    openedMailto.target = "_blank";
+    openedMailto.click();
+
+    // Check if email client opened after a short delay
+    setTimeout(() => {
+      // If the window is still focused, email client probably didn't open
+      if (document.hasFocus()) {
+        window.open(gmailLink, "_blank");
+        setStatus("Opening web email client...");
+      } else {
+        setStatus("Opening your email client...");
+      }
+    }, 500);
   };
   const sendToWhatsapp = () => {
     if (!validateForm()) {

@@ -43,7 +43,7 @@ const AboutUsMain = () => {
               <div className="relative group">
                 <div className="overflow-hidden rounded-xl">
                   <img
-                    src="/Founder.png"
+                    src="/sir.jpg"
                     alt="Founder"
                     className="w-full h-auto aspect-[3/4] object-cover object-center transform group-hover:scale-105 transition-all duration-700"
                   />
@@ -60,8 +60,8 @@ const AboutUsMain = () => {
             >
               <div>
                 <h2 className="text-3xl md:text-4xl font-light text-white mb-3">
-                  Our Founder
-                </h2>
+                  Abhishek Kumar (Our Founder)
+                </h2> 
                 <div className="h-0.5 w-16 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] mb-6" />
               </div>
               <p className="text-gray-300 leading-relaxed text-sm md:text-base">
