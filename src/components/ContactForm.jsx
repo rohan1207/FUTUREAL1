@@ -71,9 +71,7 @@ export default function ContactForm() {
 
     if (!validateForm()) {
       return;
-    }
-
-    const emailBody = `
+    }    const emailBody = `
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
@@ -86,36 +84,32 @@ Company: ${
 
 Message:
 ${formData.message}
-    `.trim(); // Create mailto link
-    const mailtoLink = `mailto:marketing@futureal.in?subject=${encodeURIComponent(
-      `New Contact Form Submission from ${formData.name}`
-    )}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(
-      formData.email
-    )}`;
+    `.trim();
 
-    // Create Gmail fallback link
-    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=marketing@futureal.in&su=${encodeURIComponent(
-      `New Contact Form Submission from ${formData.name}`
-    )}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(
-      formData.email
-    )}`;
+    // Try to open Gmail compose in a new window first
+    const gmailComposeUrl = new URL('https://mail.google.com/mail/');
+    gmailComposeUrl.searchParams.set('view', 'cm');
+    gmailComposeUrl.searchParams.set('fs', '1');
+    gmailComposeUrl.searchParams.set('to', 'marketing@futureal.in');
+    gmailComposeUrl.searchParams.set('su', `New Contact Form Submission from ${formData.name}`);
+    gmailComposeUrl.searchParams.set('body', emailBody);
+    gmailComposeUrl.searchParams.set('cc', formData.email);
 
-    // Try to open email client first
-    const openedMailto = document.createElement("a");
-    openedMailto.href = mailtoLink;
-    openedMailto.target = "_blank";
-    openedMailto.click();
-
-    // Check if email client opened after a short delay
-    setTimeout(() => {
-      // If the window is still focused, email client probably didn't open
-      if (document.hasFocus()) {
-        window.open(gmailLink, "_blank");
-        setStatus("Opening web email client...");
-      } else {
-        setStatus("Opening your email client...");
-      }
-    }, 500);
+    // Open Gmail compose window
+    const gmailWindow = window.open(gmailComposeUrl.toString(), '_blank');
+    
+    if (gmailWindow) {
+      setStatus("Opening email in web browser...");
+    } else {
+      // If popup was blocked, try mailto as fallback
+      const mailtoLink = `mailto:marketing@futureal.in?subject=${encodeURIComponent(
+        `New Contact Form Submission from ${formData.name}`
+      )}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(
+        formData.email
+      )}`;
+      window.location.href = mailtoLink;
+      setStatus("Opening email client...");
+    }
   };
   const sendToWhatsapp = () => {
     if (!validateForm()) {
