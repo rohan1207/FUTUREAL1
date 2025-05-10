@@ -12,13 +12,14 @@ export default function ContactInfo() {
           <div className="flex items-center">
             <h3 className="font-semibold text-base sm:text-lg">Address</h3>
           </div>
-          <a 
-            href="https://maps.app.goo.gl/7uqDbo9tX8PDKmbZ7"
+          <a
+            href="https://maps.app.goo.gl/x1ivm6cTB7FVD8gh7"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 text-sm leading-tight mt-1 hover:text-orange-500 transition-colors duration-200 block"
           >
-          72/12, Nallurahalli Main Rd, near, Siddapura,<br></br> Whitefield, Bengaluru, Karnataka 560066
+            72/12, Nallurahalli Main Rd, near, Siddapura,<br></br> Whitefield,
+            Bengaluru, Karnataka 560066
           </a>
         </div>
       </div>
@@ -33,14 +34,13 @@ export default function ContactInfo() {
             <h3 className="font-semibold text-base sm:text-lg">Phone</h3>
           </div>
           <p className="text-gray-600 text-sm leading-tight mt-1">
-            <a 
-              href="tel:+919606064203" 
+            <a
+              href="tel:+919606064203"
               className="hover:text-orange-500 transition-colors duration-200"
             >
-               +91 8792702999
+              +91 8792702999
             </a>
             <br />
-          
           </p>
         </div>
       </div>
@@ -55,11 +55,11 @@ export default function ContactInfo() {
             <h3 className="font-semibold text-base sm:text-lg">Email</h3>
           </div>
           <p className="text-gray-600 text-sm leading-tight mt-1">
-            <a 
-              href="mailto:connect@futureal.in" 
+            <a
+              href="mailto:connect@futureal.in"
               className="hover:text-orange-500 transition-colors duration-200"
             >
-              marketing@futureal.in
+              himanshulokhande41@gmail.com
             </a>
           </p>
         </div>

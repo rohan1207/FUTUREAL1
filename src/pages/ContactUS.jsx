@@ -55,7 +55,7 @@ export default function ContactUs() {
         <div className="relative w-full h-[350px] mb-10">
           <div
             className="w-full h-full rounded-lg cursor-pointer relative bg-white"
-            onClick={() => window.open('https://maps.app.goo.gl/3ybXd8cSga1xAThp7', '_blank')}
+            onClick={() => window.open('https://maps.app.goo.gl/9ei93sRKsWXREATn6', '_blank')}
           >
             {isMapLoading && (
               <div className="absolute inset-0 flex items-center justify-center bg-white z-20">
@@ -68,7 +68,7 @@ export default function ContactUs() {
             <div className="absolute inset-0 bg-white bg-opacity-0 hover:bg-opacity-10 transition-all duration-300 z-0 rounded-lg"></div>
             <iframe
               className="w-full h-full rounded-lg relative z-10"
-              src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d62211.784140950156!2d77.6887048235658!3d12.956712310582938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s72%2F12%2C%20Nallurahalli%20Main%20Rd%2C%20Near%20Shell%20Petrol%20Pump%2C%20Whitefield%2C%20Bangalore%C2%A0-%C2%A0560066!5e0!3m2!1sen!2sin!4v1744721057649!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d486.0295872369404!2d77.7310359!3d12.9567002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae136a4968a2cf%3A0xf6b75e65b04d810e!2sAKASA%20Coworking%20Whitefield!5e0!3m2!1sen!2sin!4v1746866596075!5m2!1sen!2sin"
               width="600"
               height="450"
               style={{ border: "0" }}

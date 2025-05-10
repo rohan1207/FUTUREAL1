@@ -88,7 +88,7 @@ Message:
 ${formData.message}
     `.trim();
 
-    const mailtoLink = `mailto:marketing@futureal.in?subject=${encodeURIComponent(
+    const mailtoLink = `mailto:himanshulokhande41@gmail.com?subject=${encodeURIComponent(
       `New Contact Form Submission from ${formData.name}`
     )}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(
       formData.email
@@ -97,47 +97,64 @@ ${formData.message}
     window.location.href = mailtoLink;
     setStatus("Opening your email client...");
   };
-
   const sendToWhatsapp = () => {
     if (!validateForm()) {
       return;
     }
 
-    const message = `New Contact Form Submission
+    // Format the message for WhatsApp
+    const formattedMessage =
+      "*New Contact Form Submission*" +
+      "\n\n" +
+      "*Name:* " +
+      formData.name +
+      "\n" +
+      "*Email:* " +
+      formData.email +
+      "\n" +
+      "*Phone:* " +
+      formData.phone +
+      "\n" +
+      "*Subject:* " +
+      (formData.subject === "Others"
+        ? formData.otherSubject
+        : formData.subject) +
+      "\n" +
+      "*Company:* " +
+      (formData.company === "Others"
+        ? formData.otherCompany
+        : formData.company) +
+      "\n\n" +
+      "*Message:*\n" +
+      formData.message;
 
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Subject: ${
-      formData.subject === "Others" ? formData.otherSubject : formData.subject
-    }
-Company: ${
-      formData.company === "Others" ? formData.otherCompany : formData.company
-    }
-
-Message:
-${formData.message}`;
-
+    // Check if the user is on a mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     try {
-      const encodedMessage = message
-        .split("\n")
-        .map((line) => encodeURIComponent(line))
-        .join("%0A");
+      // Create the WhatsApp URL with proper encoding
+      const encodedMessage = encodeURIComponent(formattedMessage);
 
-      // For mobile devices, open WhatsApp app directly
-      if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        window.location.href = `whatsapp://send?phone=918792702999&text=${encodedMessage}`;
-      } else {
-        // For desktop, open WhatsApp Web
-        window.open(
-          `https://web.whatsapp.com/send?phone=918792702999&text=${encodedMessage}`,
-          "_blank"
-        );
+      // First try native protocol for mobile, web.whatsapp.com for desktop
+      const primaryUrl = isMobile
+        ? `whatsapp://send?phone=918792702999&text=${encodedMessage}`
+        : `https://web.whatsapp.com/send?phone=918792702999&text=${encodedMessage}`;
+
+      // Fallback URLs if the primary ones don't work
+      const fallbackUrl = `https://api.whatsapp.com/send?phone=918792702999&text=${encodedMessage}`;
+
+      // Try to open WhatsApp
+      const openWhatsApp = () => {
+        window.location.href = fallbackUrl;
+      };
+
+      // Try primary URL first, fallback after a short delay if it doesn't work
+      window.location.href = primaryUrl;
+      if (isMobile) {
+        setTimeout(openWhatsApp, 1000);
       }
     } catch (error) {
       console.error("Error creating WhatsApp link:", error);
-      // Fallback to basic WhatsApp link
-      window.open(`https://wa.me/918792702999`, "_blank");
+      window.location.href = `https://api.whatsapp.com/send?phone=918792702999&text=${encodedMessage}`;
     }
   };
 

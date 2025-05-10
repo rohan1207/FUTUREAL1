@@ -86,16 +86,61 @@ const AboutUsMain = () => {
               </p>
             </motion.div>
           </div>
-        </motion.div>
-
-        {/* Team Section Placeholder */}
+        </motion.div>        {/* Team Member - Sapna Mishra */}
         <motion.div
-          className="max-w-6xl mx-auto"
+          className="max-w-6xl mx-auto pt-20"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 1, delay: 0.4 }}
         >
-          {/* Future team content can go here */}
+          <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Team Member Image */}
+            <motion.div
+              className="md:col-span-4 relative max-w-[280px] mx-auto md:mx-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="relative group">
+                <div className="overflow-hidden rounded-xl">
+                  <img
+                    src="/sapna_mishra.JPG"
+                    alt="Sapna Mishra"
+                    className="w-full h-auto aspect-[3/4] object-cover object-center transform group-hover:scale-105 transition-all duration-700"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Team Member Info */}
+            <motion.div
+              className="md:col-span-8 space-y-6 px-4 sm:px-6 md:px-0"
+              initial={{ opacity: 0, x: 20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div>
+                <h2 className="text-3xl md:text-4xl font-light text-white mb-3">
+                  Sapna Mishra
+                </h2>
+                <div className="h-0.5 w-16 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] mb-6" />
+              </div>
+              <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                A dreamer at heart, Sapna Mishra transitioned from a successful career in banking and finance 
+                to follow her true calling—design. With nearly a decade of experience in building and managing 
+                her own silver and imitation jewelry brand, she developed a keen eye for aesthetics and craftsmanship.
+              </p>
+              <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                Her passion for interiors was sparked while designing her own home, where she discovered 
+                the joy of blending timeless elegance with modern functionality. Today, she brings that 
+                same thoughtful design philosophy into every space she curates.
+              </p>
+              <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                Sapna holds a degree in commerce and has completed her Executive MBA from IIM Kolkata, 
+                combining business acumen with creative vision to lead with both style and strategy.
+              </p>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </div>

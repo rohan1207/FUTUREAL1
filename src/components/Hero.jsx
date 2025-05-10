@@ -226,10 +226,10 @@ const Hero = ({ onLoad }) => {
             className="text-4xl md:text-6xl font-bold leading-tight mb-6"
           >
             <motion.span variants={itemVariants}>
-            Creating spaces,
+              Creating spaces,
               <br />
               <span className="bg-gradient-to-r from-sky-400 to-purple-500 bg-clip-text text-transparent">
-              Defining Experiences
+                Defining Experiences
               </span>
             </motion.span>
           </motion.h1>
@@ -254,7 +254,7 @@ const Hero = ({ onLoad }) => {
               onClick={handleButtonClick}
               className="px-6 py-2 bg-white/10 border border-white rounded-full hover:bg-gradient-to-r from-sky-500 to-purple-500 transition-all"
             >
-              We're interested in
+              What're you looking for ?
             </button>
             <AnimatePresence>
               {open && (
