@@ -71,7 +71,8 @@ export default function ContactForm() {
 
     if (!validateForm()) {
       return;
-    }    const emailBody = `
+    }
+    const emailBody = `
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
@@ -87,17 +88,20 @@ ${formData.message}
     `.trim();
 
     // Try to open Gmail compose in a new window first
-    const gmailComposeUrl = new URL('https://mail.google.com/mail/');
-    gmailComposeUrl.searchParams.set('view', 'cm');
-    gmailComposeUrl.searchParams.set('fs', '1');
-    gmailComposeUrl.searchParams.set('to', 'marketing@futureal.in');
-    gmailComposeUrl.searchParams.set('su', `New Contact Form Submission from ${formData.name}`);
-    gmailComposeUrl.searchParams.set('body', emailBody);
-    gmailComposeUrl.searchParams.set('cc', formData.email);
+    const gmailComposeUrl = new URL("https://mail.google.com/mail/");
+    gmailComposeUrl.searchParams.set("view", "cm");
+    gmailComposeUrl.searchParams.set("fs", "1");
+    gmailComposeUrl.searchParams.set("to", "marketing@futureal.in");
+    gmailComposeUrl.searchParams.set(
+      "su",
+      `New Contact Form Submission from ${formData.name}`
+    );
+    gmailComposeUrl.searchParams.set("body", emailBody);
+    gmailComposeUrl.searchParams.set("cc", formData.email);
 
     // Open Gmail compose window
-    const gmailWindow = window.open(gmailComposeUrl.toString(), '_blank');
-    
+    const gmailWindow = window.open(gmailComposeUrl.toString(), "_blank");
+
     if (gmailWindow) {
       setStatus("Opening email in web browser...");
     } else {
