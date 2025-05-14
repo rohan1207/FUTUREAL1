@@ -59,8 +59,9 @@ const AboutUsMain = () => {
             >
               <div>
                 <h2 className="text-3xl md:text-4xl font-light text-white mb-3">
-                  Abhishek Kumar <span>(CEO & Founder)</span> 
+                  Abhishek Kumar <h3 className="text-lg">Founder & CEO</h3>
                 </h2>
+               
                 <div className="h-0.5 w-16 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] mb-6" />
               </div>
               <p className="text-gray-300 leading-relaxed text-sm md:text-base">
@@ -121,7 +122,7 @@ const AboutUsMain = () => {
             >
               <div>
                 <h2 className="text-3xl md:text-4xl font-light text-white mb-3">
-                  Sapna Mishra
+                  Sapna Mishra  <h3 className="text-lg">Business Head</h3>
                 </h2>
                 <div className="h-0.5 w-16 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] mb-6" />
               </div>

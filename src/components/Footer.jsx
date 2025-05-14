@@ -115,7 +115,7 @@ const Footer = () => {
             </h3>
             <div className="space-y-2.5">
               <a
-                href="https://maps.app.goo.gl/7uqDbo9tX8PDKmbZ7"
+                href="https://maps.app.goo.gl/3wN7Hy4LomB35CcK9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] text-sm flex items-center gap-3 group"
