@@ -17,6 +17,7 @@ import WhatWeDoHero from "../components/WhatWeDoHero";
 import WhyChooseUs from "../components/WhyChooseUs";
 import { DesignandBuild } from "../components/DesignandBuild";
 import { GeneralContracting } from "../components/GeneralContracting";
+import { Interior_Fit_Outs } from "../components/Interior Fit-outs";
 
 const WhatWeDo = ({ onLoad }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,10 +32,10 @@ const WhatWeDo = ({ onLoad }) => {
   const controls = useAnimation();
   const { scrollY } = useScroll();
   const containerRef = useRef(null);
-
   // Add refs for sections
   const designAndBuildRef = useRef(null);
   const generalContractingRef = useRef(null);
+  const interiorFitoutsRef = useRef(null);
 
   // Handle scroll to section based on hash
   useEffect(() => {
@@ -48,6 +49,8 @@ const WhatWeDo = ({ onLoad }) => {
           generalContractingRef.current
         ) {
           generalContractingRef.current.scrollIntoView({ behavior: "smooth" });
+        } else if (hash === "#interior-fitouts" && interiorFitoutsRef.current) {
+          interiorFitoutsRef.current.scrollIntoView({ behavior: "smooth" });
         }
       }, 100);
     };
@@ -292,11 +295,13 @@ const WhatWeDo = ({ onLoad }) => {
           whileInView={{ opacity: 0.2 }}
           transition={{ duration: 1.2 }}
         />
-
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-black z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-black z-0" />{" "}
         <div ref={generalContractingRef}>
           <GeneralContracting />
+        </div>
+        <div ref={interiorFitoutsRef}>
+          <Interior_Fit_Outs />
         </div>
         <div className="relative z-10 container mx-auto px-4">
           {/* Section Header */}
@@ -347,7 +352,6 @@ const WhatWeDo = ({ onLoad }) => {
                     <h3 className="text-2xl font-light mb-2">
                       {sectors[currentIndex].title}
                     </h3>
-                  
                   </motion.div>
                 </motion.div>
               </AnimatePresence>

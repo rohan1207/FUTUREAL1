@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import React from "react";
+import { motion, useScroll } from "framer-motion";
 import Hero from "../components/Hero";
 import OurProcess from "../components/OurProcess";
 import DesignExcellence from "../components/DesignExcellence";
@@ -12,62 +7,10 @@ import WhyChooseUs from "../components/WhyChooseUs";
 import Statistics from "../components/Statistics";
 
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [timeoutOccurred, setTimeoutOccurred] = useState(false);
-  const [componentLoaded, setComponentLoaded] = useState({
-    hero: false,
-    whyChooseUs: false,
-    ourValues: false,
-    statistics: false,
-    ourProcess: false,
-    designExcellence: false,
-  });
-
   const { scrollYProgress } = useScroll();
-
-  // Effect for checking loaded components
-  useEffect(() => {
-    const allLoaded = Object.values(componentLoaded).every((loaded) => loaded);
-    if (allLoaded || timeoutOccurred) {
-      setIsLoading(false);
-    }
-  }, [componentLoaded, timeoutOccurred]);
-
-  // Effect for timeout
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeoutOccurred(true);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleComponentLoad = (component) => {
-    setComponentLoaded((prev) => ({
-      ...prev,
-      [component]: true,
-    }));
-  };
 
   return (
     <div className="relative overflow-hidden">
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black flex items-center justify-center"
-          >
-            <div
-              className="w-12 h-12 rounded-full border-4 border-t-transparent animate-spin"
-              style={{
-                borderImage: "linear-gradient(to right, #2A72F8, #8F44EC) 1",
-              }}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] transform origin-left z-50"
@@ -76,23 +19,21 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative">
-        <Hero onLoad={() => handleComponentLoad("hero")} />
+        <Hero />
       </section>
 
       {/* Design Excellence Section with Diagonal Cut */}
       <section className="relative">
-        <div className="absolute top-0 left-0 w-full h-32   z-10" />
+        <div className="absolute top-0 left-0 w-full h-32 z-10" />
         <div className="clip-diagonal-top">
-          <DesignExcellence
-            onLoad={() => handleComponentLoad("designExcellence")}
-          />
+          <DesignExcellence />
         </div>
       </section>
 
       {/* Why Choose Us Section with Floating Elements */}
       <section className="relative overflow-visible">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(42,114,248,0.1),transparent_50%)]" />
-        <WhyChooseUs onLoad={() => handleComponentLoad("whyChooseUs")} />
+        <WhyChooseUs />
 
         {/* Floating Elements */}
         <motion.div
@@ -124,7 +65,7 @@ export default function HomePage() {
       {/* Statistics Section with Parallax */}
       <section className="relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(143,68,236,0.1),transparent_70%)]" />
-        <Statistics onLoad={() => handleComponentLoad("statistics")} />
+        <Statistics />
       </section>
 
       {/* Our Process Section with Wave Divider */}
@@ -144,7 +85,7 @@ export default function HomePage() {
           </svg>
         </div>
         <div className="clip-diagonal-bottom">
-          <OurProcess onLoad={() => handleComponentLoad("ourProcess")} />
+          <OurProcess />
         </div>
       </section>
     </div>

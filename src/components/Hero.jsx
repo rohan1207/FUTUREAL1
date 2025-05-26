@@ -252,7 +252,7 @@ const Hero = ({ onLoad }) => {
           >
             <button
               onClick={handleButtonClick}
-              className="px-6 py-2 bg-white/10 border border-white rounded-full hover:bg-gradient-to-r from-sky-500 to-purple-500 transition-all"
+              className="px-6 py-2 bg-white/10 border border-white rounded-full hover:bg-gradient-to-r from-sky-500 to-purple-500 transition-all mt-[-15px]"
             >
               What are you looking for ?
             </button>
@@ -263,7 +263,7 @@ const Hero = ({ onLoad }) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute mt-1 w-48 bg-white text-black rounded-lg shadow-lg overflow-hidden z-50"
+                  className="absolute mt-1 w-48 bg-white text-black rounded-lg shadow-lg overflow-hidden z-100"
                 >
                   <li className="hover:bg-gray-100">
                     <Link
@@ -281,6 +281,14 @@ const Hero = ({ onLoad }) => {
                       onClick={() => setOpen(false)}
                     >
                       General Contracting
+                    </Link>
+                  </li>                  <li className="hover:bg-gray-100">
+                    <Link
+                      to="/design-build#interior-fitouts"
+                      className="block px-4 py-2 w-full"
+                      onClick={() => setOpen(false)}
+                    >
+                      Interior Fit-outs
                     </Link>
                   </li>
                 </motion.ul>

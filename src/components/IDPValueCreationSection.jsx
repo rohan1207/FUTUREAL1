@@ -76,7 +76,7 @@ export default function IPDValueCreation({ onLoad }) {
   return (
     <div className="relative w-full min-h-[90vh] py-20 px-4 bg-gradient-to-br from-[black] via-[#111827] to-[#0c0c0c] text-white overflow-hidden">
       <h2 className="text-4xl font-bold text-center mb-16 drop-shadow-xl">
-        Value Creation Through IPD
+        Value Creation Through Integrated Project Delivery
       </h2>
 
       {!isMobile && (

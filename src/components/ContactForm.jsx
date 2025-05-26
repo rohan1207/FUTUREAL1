@@ -5,10 +5,6 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
-    otherSubject: "",
-    company: "",
-    otherCompany: "",
     phone: "",
     message: "",
   });
@@ -22,11 +18,6 @@ export default function ContactForm() {
       setErrors({ ...errors, [e.target.name]: "" });
     }
   };
-
-  const subjectOptions = ["Individual", "Corporate", "Others"];
-
-  const companyOptions = ["Individual", "Corporate", "Others"];
-
   const validateForm = () => {
     const newErrors = {};
 
@@ -39,23 +30,10 @@ export default function ContactForm() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
-
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
     } else if (!/^[0-9+\-\s()]{10,}$/.test(formData.phone)) {
       newErrors.phone = "Please enter a valid phone number";
-    }
-
-    if (!formData.subject) {
-      newErrors.subject = "Please select a subject";
-    } else if (formData.subject === "Others" && !formData.otherSubject.trim()) {
-      newErrors.otherSubject = "Please specify your subject";
-    }
-
-    if (!formData.company) {
-      newErrors.company = "Please select a company type";
-    } else if (formData.company === "Others" && !formData.otherCompany.trim()) {
-      newErrors.otherCompany = "Please specify your company type";
     }
 
     if (!formData.message.trim()) {
@@ -65,7 +43,6 @@ export default function ContactForm() {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -76,43 +53,51 @@ export default function ContactForm() {
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
-Subject: ${
-      formData.subject === "Others" ? formData.otherSubject : formData.subject
-    }
-Company: ${
-      formData.company === "Others" ? formData.otherCompany : formData.company
-    }
 
 Message:
 ${formData.message}
     `.trim();
 
-    // Try to open Gmail compose in a new window first
-    const gmailComposeUrl = new URL("https://mail.google.com/mail/");
-    gmailComposeUrl.searchParams.set("view", "cm");
-    gmailComposeUrl.searchParams.set("fs", "1");
-    gmailComposeUrl.searchParams.set("to", "marketing@futureal.in");
-    gmailComposeUrl.searchParams.set(
-      "su",
-      `New Contact Form Submission from ${formData.name}`
-    );
-    gmailComposeUrl.searchParams.set("body", emailBody);
-    gmailComposeUrl.searchParams.set("cc", formData.email);
+    // Check if user is on mobile
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    // Open Gmail compose window
-    const gmailWindow = window.open(gmailComposeUrl.toString(), "_blank");
-
-    if (gmailWindow) {
-      setStatus("Opening email in web browser...");
-    } else {
-      // If popup was blocked, try mailto as fallback
+    if (isMobile) {
+      // On mobile, directly use mailto: protocol to open native email app
       const mailtoLink = `mailto:marketing@futureal.in?subject=${encodeURIComponent(
         `New Contact Form Submission from ${formData.name}`
       )}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(
         formData.email
       )}`;
       window.location.href = mailtoLink;
-      setStatus("Opening email client...");
+      setStatus("Opening email app...");
+    } else {
+      // On desktop, try Gmail compose in browser first
+      const gmailComposeUrl = new URL("https://mail.google.com/mail/");
+      gmailComposeUrl.searchParams.set("view", "cm");
+      gmailComposeUrl.searchParams.set("fs", "1");
+      gmailComposeUrl.searchParams.set("to", "marketing@futureal.in");
+      gmailComposeUrl.searchParams.set(
+        "su",
+        `New Contact Form Submission from ${formData.name}`
+      );
+      gmailComposeUrl.searchParams.set("body", emailBody);
+      gmailComposeUrl.searchParams.set("cc", formData.email);
+
+      // Open Gmail compose window
+      const gmailWindow = window.open(gmailComposeUrl.toString(), "_blank");
+
+      if (gmailWindow) {
+        setStatus("Opening email in web browser...");
+      } else {
+        // If popup was blocked, try mailto as fallback
+        const mailtoLink = `mailto:marketing@futureal.in?subject=${encodeURIComponent(
+          `New Contact Form Submission from ${formData.name}`
+        )}&body=${encodeURIComponent(emailBody)}&cc=${encodeURIComponent(
+          formData.email
+        )}`;
+        window.location.href = mailtoLink;
+        setStatus("Opening email client...");
+      }
     }
   };
   const sendToWhatsapp = () => {
@@ -133,16 +118,7 @@ ${formData.message}
       "*Phone:* " +
       formData.phone +
       "\n" +
-      "*Subject:* " +
-      (formData.subject === "Others"
-        ? formData.otherSubject
-        : formData.subject) +
       "\n" +
-      "*Company:* " +
-      (formData.company === "Others"
-        ? formData.otherCompany
-        : formData.company) +
-      "\n\n" +
       "*Message:*\n" +
       formData.message;
 
@@ -230,7 +206,6 @@ ${formData.message}
             <p className="text-red-500 text-sm mt-1">{errors.name}</p>
           )}
         </div>
-
         <div>
           <input
             type="email"
@@ -245,8 +220,7 @@ ${formData.message}
           {errors.email && (
             <p className="text-red-500 text-sm mt-1">{errors.email}</p>
           )}
-        </div>
-
+        </div>{" "}
         <div>
           <input
             type="tel"
@@ -262,101 +236,6 @@ ${formData.message}
             <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
           )}
         </div>
-
-        <div className="relative w-full">
-          <select
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            className={`w-full p-3 border ${
-              errors.subject ? "border-red-500" : "border-gray-300"
-            } rounded-lg bg-white text-sm md:text-base appearance-none`}
-          >
-            <option value="">Select Subject *</option>
-            {subjectOptions.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-            <svg
-              className="fill-current h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-            </svg>
-          </div>
-          {errors.subject && (
-            <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
-          )}
-        </div>
-
-        {formData.subject === "Others" && (
-          <div>
-            <textarea
-              name="otherSubject"
-              placeholder="Please specify your subject *"
-              value={formData.otherSubject}
-              onChange={handleChange}
-              className={`w-full p-3 border ${
-                errors.otherSubject ? "border-red-500" : "border-gray-300"
-              } rounded-lg text-sm md:text-base h-20 resize-none`}
-            ></textarea>
-            {errors.otherSubject && (
-              <p className="text-red-500 text-sm mt-1">{errors.otherSubject}</p>
-            )}
-          </div>
-        )}
-
-        <div className="relative w-full">
-          <select
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
-            className={`w-full p-3 border ${
-              errors.company ? "border-red-500" : "border-gray-300"
-            } rounded-lg bg-white text-sm md:text-base appearance-none`}
-          >
-            <option value="">Select Company *</option>
-            {companyOptions.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-            <svg
-              className="fill-current h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-            </svg>
-          </div>
-          {errors.company && (
-            <p className="text-red-500 text-sm mt-1">{errors.company}</p>
-          )}
-        </div>
-
-        {formData.company === "Others" && (
-          <div>
-            <textarea
-              name="otherCompany"
-              placeholder="Please specify your company type *"
-              value={formData.otherCompany}
-              onChange={handleChange}
-              className={`w-full p-3 border ${
-                errors.otherCompany ? "border-red-500" : "border-gray-300"
-              } rounded-lg text-sm md:text-base h-20 resize-none`}
-            ></textarea>
-            {errors.otherCompany && (
-              <p className="text-red-500 text-sm mt-1">{errors.otherCompany}</p>
-            )}
-          </div>
-        )}
-
         <div>
           <textarea
             name="message"
@@ -371,7 +250,6 @@ ${formData.message}
             <p className="text-red-500 text-sm mt-1">{errors.message}</p>
           )}
         </div>
-
         {/* Conditional Rendering for Buttons */}
         {isWhatsApp ? (
           <button

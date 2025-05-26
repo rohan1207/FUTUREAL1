@@ -3,8 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Eye, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function VisonandMission({ onLoad }) {
-  const [imagesLoaded, setImagesLoaded] = useState(0);
+export default function VisonandMission() {
   const [currentImage, setCurrentImage] = useState(0);
 
   const images = [
@@ -36,40 +35,6 @@ export default function VisonandMission({ onLoad }) {
         "To deliver seamless, service-driven turnkey solutions across Design & Build, General Contracting and Real Estate Development - creating exceptional value, optimizing returns, and setting new benchmarks in quality, innovation, and client experience, while upholding the highest standards of integrity, sustainability, and industry excellence.",
     },
   ];
-
-  // Preload images
-  useEffect(() => {
-    const preloadImages = () => {
-      console.log("WhoAreWe: Starting to preload images");
-      images.forEach((imagePath) => {
-        const img = new Image();
-        img.src = imagePath;
-        img.onload = () => {
-          console.log(`WhoAreWe: Image loaded - ${imagePath}`);
-          setImagesLoaded((prev) => {
-            const newCount = prev + 1;
-            if (newCount === images.length) {
-              console.log("WhoAreWe: All images loaded");
-              onLoad?.();
-            }
-            return newCount;
-          });
-        };
-        img.onerror = () => {
-          console.log(`WhoAreWe: Image failed to load - ${imagePath}`);
-          setImagesLoaded((prev) => {
-            const newCount = prev + 1;
-            if (newCount === images.length) {
-              console.log("WhoAreWe: All images processed (including errors)");
-              onLoad?.();
-            }
-            return newCount;
-          });
-        };
-      });
-    };
-    preloadImages();
-  }, [onLoad, images]);
 
   // Simple background image rotation
   useEffect(() => {

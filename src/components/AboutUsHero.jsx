@@ -41,8 +41,14 @@ export default function WWRHeroSection({ onLoad }) {
     visible: { opacity: 1, y: 0 },
   };
 
-  return (
-    <div className="relative h-screen w-full overflow-hidden">
+  return (    <div className="relative h-screen w-full overflow-hidden">
+      {/* Static Background Image */}
+      <img
+        src="/team-alt.png"
+        alt="Team background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      
       {/* Background Video */}
       <video
         autoPlay
@@ -50,13 +56,16 @@ export default function WWRHeroSection({ onLoad }) {
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
         style={{
           animation: "fadeIn 1s ease-in-out",
           objectFit: "cover",
           objectPosition: "center",
         }}
-        onLoadedData={() => onLoad?.()}
+        onLoadedData={(e) => {
+          e.target.classList.remove("opacity-0");
+          onLoad?.();
+        }}
       >
         <source src="/team.mp4" type="video/mp4" />
         Your browser does not support the video tag.
