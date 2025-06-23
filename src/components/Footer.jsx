@@ -121,14 +121,15 @@ const Footer = () => {
                 className="text-gray-300 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] text-sm flex items-center gap-3 group"
               >
                 <HiOutlineLocationMarker className="w-5 h-5 text-gray-400 group-hover:text-[#2A72F8] transition-colors" />
-                72/12, Nallurahalli Main Rd, Siddapura, Whitefield, Bengaluru, Karnataka 560066
+                72/12, Nallurahalli Main Rd, Siddapura, Whitefield, Bengaluru,
+                Karnataka 560066
               </a>
               <a
                 href="tel:+91 96060 64203"
                 className="text-gray-300 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#2A72F8] to-[#8F44EC] text-sm flex items-center gap-3 group"
               >
                 <HiOutlinePhone className="w-5 h-5 text-gray-400 group-hover:text-[#2A72F8] transition-colors" />
-                +91 8792702999
+                +91 8888811860‬
               </a>
               <a
                 href="mailto:info@futureal.com"

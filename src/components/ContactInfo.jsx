@@ -38,7 +38,7 @@ export default function ContactInfo() {
               href="tel:+919606064203"
               className="hover:text-orange-500 transition-colors duration-200"
             >
-              +91 8792702999
+              +91 8888811860‬
             </a>
             <br />
           </p>

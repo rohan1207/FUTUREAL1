@@ -106,50 +106,26 @@ ${formData.message}
     }
 
     // Format the message for WhatsApp
-    const formattedMessage =
-      "*New Contact Form Submission*" +
-      "\n\n" +
-      "*Name:* " +
-      formData.name +
-      "\n" +
-      "*Email:* " +
-      formData.email +
-      "\n" +
-      "*Phone:* " +
-      formData.phone +
-      "\n" +
-      "\n" +
-      "*Message:*\n" +
-      formData.message;
+    const formattedMessage = 
+      `*New Contact Form Submission*\n\n` +
+      `*Name:* ${formData.name}\n` +
+      `*Email:* ${formData.email}\n` +
+      `*Phone:* ${formData.phone}\n\n` +
+      `*Message:*\n${formData.message}`;
 
-    // Check if the user is on a mobile device
+    const encodedMessage = encodeURIComponent(formattedMessage);
+    const phoneNumber = "918888811860"; // Cleaned phone number
+
+    // Detect if the user is on a mobile device
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    try {
-      // Create the WhatsApp URL with proper encoding
-      const encodedMessage = encodeURIComponent(formattedMessage);
 
-      // First try native protocol for mobile, web.whatsapp.com for desktop
-      const primaryUrl = isMobile
-        ? `whatsapp://send?phone=918792702999&text=${encodedMessage}`
-        : `https://web.whatsapp.com/send?phone=918792702999&text=${encodedMessage}`;
+    // Use the appropriate URL for desktop vs. mobile
+    const whatsappUrl = isMobile
+      ? `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`
+      : `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
-      // Fallback URLs if the primary ones don't work
-      const fallbackUrl = `https://api.whatsapp.com/send?phone=918792702999&text=${encodedMessage}`;
-
-      // Try to open WhatsApp
-      const openWhatsApp = () => {
-        window.location.href = fallbackUrl;
-      };
-
-      // Try primary URL first, fallback after a short delay if it doesn't work
-      window.location.href = primaryUrl;
-      if (isMobile) {
-        setTimeout(openWhatsApp, 1000);
-      }
-    } catch (error) {
-      console.error("Error creating WhatsApp link:", error);
-      window.location.href = `https://api.whatsapp.com/send?phone=918792702999&text=${encodedMessage}`;
-    }
+    // Open WhatsApp in a new tab/window.
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
